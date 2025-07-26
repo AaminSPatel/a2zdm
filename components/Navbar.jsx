@@ -69,7 +69,7 @@ const Navbar = () => {
               <img src="/logo1.png" alt="Logo" className="h-8 w-8 bg-white object-cover " />
             </div>
             <div className="flex flex-col">
-  <span className="text-xl font-bold font-space-grotesk text-color-1">A2ZDM Pvt. Ltd.</span> <br />
+  <span className="text-xl font-bold font-space-grotesk text-color-1">A2ZDM Pvt. Ltd.</span>
             <span className="text-sm font-space-grotesk text-color-2 comforta">A Martech Company</span>
           
             </div>
