@@ -138,7 +138,7 @@ const Footer = () => {
               <FiInstagram className="w-5 h-5" />
             </a>
           </div>
-          <p className="text-color-2 text-sm text-center md:text-left">© 2024 A2ZDM. All rights reserved.</p>
+          <p className="text-color-2 text-sm text-center md:text-left">© 2024 A2ZDM Pvt. Ltd. All rights reserved.</p>
         </div>
       </div>
     </footer>

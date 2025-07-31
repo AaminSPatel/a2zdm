@@ -1,102 +1,95 @@
-"use client"
+"use client";
 
-import { useParams } from "next/navigation"
-import { motion } from "framer-motion"
-import Link from "next/link"
-import Navbar from "../../../components/Navbar"
-import Footer from "../../../components/Footer"
-import { FiCalendar, FiUser, FiClock, FiArrowLeft, FiShare2, FiTwitter, FiLinkedin, FiFacebook } from "react-icons/fi"
+import { useState, useEffect } from "react";
+import { useParams } from "next/navigation";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import Head from "next/head";
+import Navbar from "../../../components/Navbar";
+import Footer from "../../../components/Footer";
+import { FiCalendar, FiUser, FiClock, FiArrowLeft, FiShare2, FiTwitter, FiLinkedin, FiFacebook, FiArrowRight } from "react-icons/fi";
+import { useTech } from "@/components/TechContext";
 
 const BlogDetail = () => {
-  const params = useParams()
-  const { id } = params
+  const params = useParams();
+  const { slug } = params;
+  const { blogs, loading, error } = useTech();
+  const [blog, setBlog] = useState(null);
+  const [seoData, setSeoData] = useState({});
+  const [relatedPosts, setRelatedPosts] = useState([]);
+  
+  // Find current blog and related posts
+  useEffect(() => {
+    if (blogs.length > 0 && slug) {
+      const foundBlog = blogs.find(b => b.slug === slug);
+      
+      if (foundBlog) {
+        setBlog(foundBlog);
+        
+        // Set SEO data
+         const wpSeoData = foundBlog.yoast_head_json || {}
+        
+        setSeoData({
+          title: wpSeoData.title || foundBlog.title || '',
+          metaDesc: wpSeoData.description || foundBlog.excerpt || '',
+          canonical: wpSeoData.canonical || window.location.href,
+          ogTitle: wpSeoData.og_title || foundBlog.title || '',
+          ogDescription: wpSeoData.og_description || foundBlog.excerpt || '',
+          ogImage: wpSeoData.og_image?.[0]?.url || foundBlog.image,
+          twitterTitle: wpSeoData.twitter_title || foundBlog.title || '',
+          twitterDescription: wpSeoData.twitter_description || foundBlog.excerpt || '',
+          twitterImage: wpSeoData.twitter_image || foundBlog.image
+        })
 
-  // Mock blog data - in real app, this would come from API/CMS
-  const blogPost = {
-    id: 1,
-    title: "Complete Guide to GA4 Migration: What You Need to Know",
-    excerpt:
-      "Learn how to successfully migrate from Universal Analytics to GA4 with our comprehensive step-by-step guide covering setup, configuration, and best practices.",
-    content: `
-      <h2>Introduction to GA4 Migration</h2>
-      <p>Google Analytics 4 (GA4) represents a fundamental shift in how we track and analyze user behavior. With Universal Analytics sunsetting, businesses must migrate to GA4 to maintain their analytics capabilities.</p>
-      
-      <h2>Why GA4 Migration Matters</h2>
-      <p>GA4 offers several advantages over Universal Analytics:</p>
-      <ul>
-        <li>Enhanced cross-platform tracking</li>
-        <li>Privacy-focused measurement</li>
-        <li>Machine learning insights</li>
-        <li>Future-proof analytics foundation</li>
-      </ul>
-      
-      <h2>Step-by-Step Migration Process</h2>
-      <h3>1. Audit Your Current Setup</h3>
-      <p>Before migrating, conduct a thorough audit of your existing Universal Analytics setup. Document all goals, events, custom dimensions, and segments you're currently tracking.</p>
-      
-      <h3>2. Create Your GA4 Property</h3>
-      <p>Set up a new GA4 property in your Google Analytics account. This can run parallel to your existing Universal Analytics property during the transition period.</p>
-      
-      <h3>3. Configure Enhanced Ecommerce</h3>
-      <p>If you're running an e-commerce site, properly configure enhanced ecommerce tracking in GA4. The event structure is different from Universal Analytics, so careful mapping is essential.</p>
-      
-      <h2>Common Migration Challenges</h2>
-      <p>Many businesses face challenges during GA4 migration:</p>
-      <ul>
-        <li>Data structure differences</li>
-        <li>Reporting discrepancies</li>
-        <li>Custom event setup</li>
-        <li>Historical data limitations</li>
-      </ul>
-      
-      <h2>Best Practices for Success</h2>
-      <p>To ensure a smooth migration:</p>
-      <ol>
-        <li>Start early and run both properties in parallel</li>
-        <li>Train your team on GA4 interface and concepts</li>
-        <li>Set up proper conversion tracking</li>
-        <li>Create custom reports for your specific needs</li>
-      </ol>
-      
-      <h2>Conclusion</h2>
-      <p>GA4 migration is not just a technical necessity—it's an opportunity to improve your analytics setup and gain deeper insights into user behavior. With proper planning and execution, you can make this transition smooth and beneficial for your business.</p>
-    `,
-    category: "Analytics",
-    author: "Priya Patel",
-    date: "2024-01-15",
-    readTime: "8 min read",
-    image: "/placeholder.svg?height=400&width=800",
-    tags: ["GA4", "Analytics", "Migration", "Google Analytics"],
+     
+
+        // Find related posts (same category or tags)
+        const related = blogs.filter(b => 
+          b.slug !== slug && 
+          (b.categories.some(cat => foundBlog.categories.includes(cat)) || 
+          (b.tags?.some(tag => foundBlog.tags.includes(tag)))))
+          .slice(0, 3)
+        
+        setRelatedPosts(related);
+      }
+    }
+  }, [blogs, slug]);
+
+  if (loading) {
+    return (
+      <div className="w-full h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-20 w-20 border-t-4 border-cyan-500"></div>
+      </div>
+    );
   }
 
-  const relatedPosts = [
-    {
-      id: 2,
-      title: "Technical SEO Checklist for 2024",
-      category: "SEO",
-      image: "/placeholder.svg?height=200&width=300",
-    },
-    {
-      id: 4,
-      title: "BigQuery for Marketing Analytics",
-      category: "Business Intelligence",
-      image: "/placeholder.svg?height=200&width=300",
-    },
-    {
-      id: 7,
-      title: "Cookie-less Future Analytics",
-      category: "Analytics",
-      image: "/placeholder.svg?height=200&width=300",
-    },
-  ]
-
-  if (!blogPost) {
-    return <div>Loading...</div>
-  }
+  if (error) return <div className="min-h-screen flex items-center justify-center">Error: {error}</div>;
+  if (!blog) return <div className="min-h-screen flex items-center justify-center">Post not found</div>;
 
   return (
     <>
-      <Navbar />
+     <Head>
+        <title>{seoData.title}</title>
+        <meta name="description" content={seoData.metaDesc} />
+        <link rel="canonical" href={seoData.canonical} />
+        
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={seoData.ogTitle} />
+        <meta property="og:description" content={seoData.ogDescription} />
+        <meta property="og:image" content={seoData.ogImage} />
+        <meta property="og:url" content={seoData.canonical} />
+        
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={seoData.twitterTitle} />
+        <meta name="twitter:description" content={seoData.twitterDescription} />
+        <meta name="twitter:image" content={seoData.twitterImage} />
+        
+        <meta property="article:published_time" content={blog.date} />
+        <meta property="article:author" content={blog.author} />
+        {blog.tags?.map(tag => (
+          <meta property="article:tag" content={tag} key={tag} />
+        ))}
+      </Head>
 
       <main className="min-h-screen bg-primary-color">
         {/* Back Navigation */}
@@ -116,28 +109,30 @@ const BlogDetail = () => {
         <section className="py-8 sm:py-12 bg-secondary-color">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-              <div className="mb-4 sm:mb-6">
-                <span className="bg-accent-cyan text-black px-2 sm:px-3 py-1 text-xs sm:text-sm font-semibold">
-                  {blogPost.category}
-                </span>
+              <div className="flex flex-wrap gap-2 mb-4 sm:mb-6">
+                {blog.categories.map((category) => (
+                  <span key={category} className="bg-accent-cyan text-black px-2 sm:px-3 py-1 text-xs sm:text-sm font-semibold">
+                    {category}
+                  </span>
+                ))}
               </div>
 
               <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-4 sm:mb-6 font-space-grotesk text-color-1">
-                {blogPost.title}
+                {blog.title}
               </h1>
 
               <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-color-2 mb-6 sm:mb-8 text-sm sm:text-base">
                 <div className="flex items-center space-x-2">
                   <FiUser className="w-3 sm:w-4 h-3 sm:h-4" />
-                  <span>{blogPost.author}</span>
+                  <span>{blog.author}</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <FiCalendar className="w-3 sm:w-4 h-3 sm:h-4" />
-                  <span>{new Date(blogPost.date).toLocaleDateString()}</span>
+                  <span>{blog.date}</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <FiClock className="w-3 sm:w-4 h-3 sm:h-4" />
-                  <span>{blogPost.readTime}</span>
+                  <span>{blog.readTime}</span>
                 </div>
               </div>
 
@@ -170,9 +165,12 @@ const BlogDetail = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <img
-                src={blogPost.image || "/placeholder.svg"}
-                alt={blogPost.title}
+                src={blog.image}
+                alt={blog.altText}
                 className="w-full h-48 sm:h-64 md:h-96 object-cover border border-color"
+                onError={(e) => {
+                  e.target.src = '/default-image.jpg';
+                }}
               />
             </motion.div>
           </div>
@@ -188,17 +186,17 @@ const BlogDetail = () => {
               className="prose prose-lg max-w-none"
             >
               <div
-                className="text-color-1 leading-relaxed"
-                dangerouslySetInnerHTML={{ __html: blogPost.content }}
+                className="text-color-1 leading-relaxed poppin"
+                dangerouslySetInnerHTML={{ __html: blog.content }}
                 style={{
-                  fontSize: "16px",
-                  lineHeight: "1.8",
+                  fontSize: "18px",
+                  lineHeight: "1.9",
                 }}
               />
             </motion.div>
 
             {/* Tags */}
-            <motion.div
+            {blog.tags.length > 0 &&<motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
@@ -206,16 +204,16 @@ const BlogDetail = () => {
             >
               <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-color-1">Tags:</h3>
               <div className="flex flex-wrap gap-2">
-                {blogPost.tags.map((tag) => (
+                {blog.tags?.map((tag) => (
                   <span
                     key={tag}
-                    className="bg-accent-color border border-color px-2 sm:px-3 py-1 text-xs sm:text-sm text-color-2 hover:border-cyan-400 hover:accent-cyan transition-colors cursor-pointer"
+                    className="bg-accent-color border border-color px-2 sm:px-3 py-1 text-xs sm:text-sm text-color-1 hover:accent-cyan transition-colors cursor-pointer"
                   >
                     {tag}
                   </span>
                 ))}
               </div>
-            </motion.div>
+            </motion.div>}
           </div>
         </section>
 
@@ -243,27 +241,33 @@ const BlogDetail = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="bg-accent-color border border-color card-hover group"
+                  className="bg-primary-color border border-color card-hover group"
                 >
                   <div className="relative overflow-hidden">
                     <img
-                      src={post.image || "/placeholder.svg"}
-                      alt={post.title}
+                      src={post.image}
+                      alt={post.altText}
                       className="w-full h-40 sm:h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                      onError={(e) => {
+                        e.target.src = '/default-image.jpg';
+                      }}
                     />
                     <div className="absolute top-3 sm:top-4 left-3 sm:left-4">
-                      <span className="bg-accent-cyan text-black px-2 py-1 text-xs font-semibold">{post.category}</span>
+                      <span className="bg-accent-cyan text-black px-2 sm:px-3 py-1 text-xs sm:text-sm font-semibold">
+                        {post.categories[0]}
+                      </span>
                     </div>
                   </div>
                   <div className="p-4 sm:p-6">
-                    <h3 className="text-base sm:text-lg font-bold text-color-1 group-hover:accent-cyan transition-colors mb-3 sm:mb-4">
+                    <h3 className="text-base sm:text-lg font-bold text-color-1 group-hover:accent-cyan transition-colors mb-3 sm:mb-4 line-clamp-2">
                       {post.title}
                     </h3>
                     <Link
-                      href={`/blog/${post.id}`}
-                      className="accent-cyan font-semibold hover:text-cyan-300 transition-colors text-sm sm:text-base"
+                      href={`/blogs/${post.slug}`}
+                      className="flex items-center space-x-1 accent-cyan font-semibold hover:text-cyan-300 transition-colors group-hover:translate-x-1 text-sm sm:text-base"
                     >
-                      Read Article →
+                      <span>Read More</span>
+                      <FiArrowRight className="w-3 sm:w-4 h-3 sm:h-4" />
                     </Link>
                   </div>
                 </motion.div>
@@ -273,7 +277,7 @@ const BlogDetail = () => {
         </section>
 
         {/* Newsletter CTA */}
-        <section className="py-16 sm:py-20 bg-accent-color">
+        <section className="py-16 sm:py-20 bg-primary-color">
           <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -299,10 +303,10 @@ const BlogDetail = () => {
           </div>
         </section>
       </main>
-
-      <Footer />
     </>
-  )
-}
+  );
+};
 
-export default BlogDetail
+export default BlogDetail;
+
+

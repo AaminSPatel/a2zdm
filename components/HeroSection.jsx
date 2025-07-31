@@ -1,29 +1,80 @@
-"use client"
 
-import { motion } from "framer-motion"
-import Link from "next/link"
-import { FiArrowRight, FiTrendingUp, FiDatabase, FiTarget, FiPlay } from "react-icons/fi"
+"use client";
+
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { FiArrowRight, FiTrendingUp, FiDatabase, FiTarget, FiPlay } from "react-icons/fi";
 
 const HeroSection = () => {
   const techIcons = [
     { icon: <FiTrendingUp />, delay: 0.2 },
     { icon: <FiDatabase />, delay: 0.4 },
     { icon: <FiTarget />, delay: 0.6 },
-  ]
+  ];
 
   const statsData = [
     { value: "240%", label: "Traffic Growth", color: "from-cyan-400 to-blue-500" },
     { value: "3.2x", label: "ROAS Increase", color: "from-blue-500 to-purple-500" },
     { value: "156%", label: "Lead Generation", color: "from-purple-500 to-pink-500" },
     { value: "98%", label: "Client Retention", color: "from-green-400 to-cyan-400" },
-  ]
+  ];
+const deviceWidth = window.innerWidth; // Gets the viewport width in pixels
+const boxWidth = 70;
+const boxesFit = Math.floor(deviceWidth / boxWidth); // Use Math.floor to get whole number
+
+  // Function to handle grid hover effect
+  const handleGridHover = (e) => {
+    const gridContainer = e.currentTarget;
+    const gridItems = gridContainer.querySelectorAll('.grid-item');
+    
+    gridItems.forEach((item) => {
+      const rect = item.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      // Calculate distance from mouse to center of grid item
+      const distance = Math.sqrt(Math.pow(x - rect.width/2, 2) + Math.pow(y - rect.height/2, 2));
+      const maxDistance = Math.sqrt(Math.pow(rect.width/2, 2) + Math.pow(rect.height/2, 2));
+      
+      // Set opacity based on distance
+      const opacity = 0.3 + (0.7 * (1 - distance/maxDistance));
+      item.style.opacity = opacity.toString();
+    });
+  };
+
+  // Function to reset grid opacity
+  const resetGridOpacity = (e) => {
+    const gridItems = e.currentTarget.querySelectorAll('.grid-item');
+    gridItems.forEach((item) => {
+      item.style.opacity = '0.2';
+    });
+  };
 
   return (
     <section className="relative min-h-screen flex items-center bg-primary-color overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
-        {/* Tech Grid Background */}
-        <div className="absolute inset-0 tech-grid opacity-20"></div>
+        {/* Tech Grid Background with hover effect */}
+        <div 
+          className="absolute inset-0  tech-gri"
+          onMouseMove={handleGridHover}
+          onMouseLeave={resetGridOpacity}
+        >
+          {/* Create grid items */}
+          {Array.from({ length: 100  }).map((_, i) => (
+            <div 
+              key={i}
+              className="grid-item absolute border hover:border-cyan-300 border-cyan-700/50 transition duration-500"
+              style={{
+                left: `${(i % 10) * 10}%`,
+                top: `${Math.floor(i / 10) * 10}%`,
+                width: '10%',
+                height: '10%',
+                opacity: 0.2
+              }}
+            />
+          ))}
+        </div>
 
         {/* Gradient Overlays */}
         <div className="absolute inset-0 bg-gradient-to-br from-cyan-900/10 via-transparent to-blue-900/10"></div>
@@ -31,6 +82,7 @@ const HeroSection = () => {
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
       </div>
 
+      
       {/* Floating Tech Icons */}
       <div className="absolute inset-0 hidden lg:block">
         {techIcons.map((item, index) => (
@@ -57,7 +109,7 @@ const HeroSection = () => {
         ))}
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           {/* Content */}
           <motion.div initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
@@ -101,10 +153,12 @@ const HeroSection = () => {
                 Explore Our Services
                 <FiArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <button className="inline-flex items-center justify-center btn-secondary text-center group">
-                <FiPlay className="mr-2 w-5 h-5 group-hover:scale-110 transition-transform" />
-                Watch Success Stories
-              </button>
+              <Link href="/case-studies" className="inline-flex items-center justify-center btn-secondary text-center group">
+                <FiPlay className="mr-2 hidden w-5 h-5 group-hover:scale-110 transition-transform" />
+                Explore Case Studies
+                                <FiArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+
+              </Link>
             </motion.div>
 
             {/* Trust Indicators */}
@@ -221,7 +275,7 @@ const HeroSection = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default HeroSection
+export default HeroSection;

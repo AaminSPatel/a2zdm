@@ -16,7 +16,7 @@ const CaseStudies = () => {
       challenge: "Low organic traffic and poor conversion rates were limiting growth potential",
       solution: "Comprehensive SEO strategy combined with conversion rate optimization and performance marketing",
       duration: "8 months",
-      image: "/placeholder.svg?height=300&width=500&text=E-commerce+Success+Story",
+      image: "/ecomseo.jpg",
       results: [
         { metric: "Revenue Growth", value: "+340%", color: "text-green-400" },
         { metric: "Organic Traffic", value: "+280%", color: "text-cyan-400" },
@@ -39,7 +39,7 @@ const CaseStudies = () => {
       challenge: "Struggling to generate qualified leads and compete with established players",
       solution: "Content marketing strategy, technical SEO, and advanced analytics implementation",
       duration: "6 months",
-      image: "/placeholder.svg?height=300&width=500&text=SaaS+Growth+Story",
+      image: "/ecomseo.jpg",
       results: [
         { metric: "Qualified Leads", value: "+500%", color: "text-green-400" },
         { metric: "Organic Rankings", value: "+245%", color: "text-cyan-400" },
@@ -62,7 +62,7 @@ const CaseStudies = () => {
       challenge: "Invisible in local search results with high customer acquisition costs",
       solution: "Local SEO optimization, Google My Business enhancement, and targeted PPC campaigns",
       duration: "4 months",
-      image: "/placeholder.svg?height=300&width=500&text=Local+Business+Success",
+      image: "/a&i.jpg",
       results: [
         { metric: "Local Rankings", value: "#1 Position", color: "text-green-400" },
         { metric: "Phone Calls", value: "+420%", color: "text-cyan-400" },
@@ -85,7 +85,7 @@ const CaseStudies = () => {
       challenge: "Outdated digital presence with minimal online lead generation",
       solution: "Complete digital overhaul including technical SEO, content marketing, and advanced analytics",
       duration: "10 months",
-      image: "/placeholder.svg?height=300&width=500&text=B2B+Manufacturing+Growth",
+      image: "/gtm.jpg",
       results: [
         { metric: "Online Inquiries", value: "+380%", color: "text-green-400" },
         { metric: "Organic Visibility", value: "+220%", color: "text-cyan-400" },
@@ -108,7 +108,7 @@ const CaseStudies = () => {
       challenge: "Difficulty attracting new patients in a competitive market",
       solution: "Local SEO, reputation management, and targeted advertising campaigns",
       duration: "5 months",
-      image: "/placeholder.svg?height=300&width=500&text=Healthcare+Practice+Growth",
+      image: "/link.jpg",
       results: [
         { metric: "New Patients", value: "+250%", color: "text-green-400" },
         { metric: "Online Reviews", value: "+400%", color: "text-cyan-400" },
@@ -131,7 +131,7 @@ const CaseStudies = () => {
       challenge: "New company with no online presence or brand recognition",
       solution: "Complete digital marketing strategy from ground up including SEO, content, and performance marketing",
       duration: "12 months",
-      image: "/placeholder.svg?height=300&width=500&text=Startup+Success+Story",
+      image: "/pcm.jpg",
       results: [
         { metric: "Brand Awareness", value: "+1200%", color: "text-green-400" },
         { metric: "Website Traffic", value: "+850%", color: "text-cyan-400" },
@@ -150,7 +150,6 @@ const CaseStudies = () => {
 
   return (
     <>
-      <Navbar />
 
       <main className="min-h-screen bg-primary-color">
         {/* Hero Section */}
@@ -364,7 +363,6 @@ const CaseStudies = () => {
         </section>
       </main>
 
-      <Footer />
     </>
   )
 }

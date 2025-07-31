@@ -4,12 +4,11 @@ import WhatWeDoSection from "../components/WhatWeDoSection"
 import ResultsSection from "../components/ResultsSection"
 import Testimonials from "../components/Testimonials"
 import ClientLogos from "../components/ClientLogos"
-import Footer from "../components/Footer"
 
 export default function Home() {
+  
   return (
     <>
-      <Navbar />
       <main className="syne">
         <HeroSection />
         <WhatWeDoSection />
@@ -17,7 +16,6 @@ export default function Home() {
         <Testimonials />
         <ClientLogos />
       </main>
-      <Footer />
     </>
   )
 }

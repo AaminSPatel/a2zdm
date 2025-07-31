@@ -1,6 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
+import Link from "next/link"
 
 const ClientLogos = () => {
   // Mock client logos - in real implementation, these would be actual logo images
@@ -112,7 +113,7 @@ const ClientLogos = () => {
             <p className="text-color-2 mb-4 sm:mb-6 text-sm sm:text-base">
               Let's discuss how we can help your business achieve similar results with our proven strategies.
             </p>
-            <button className="btn-primary">Start Your Growth Journey</button>
+             <Link href={'/case-studies'} className="btn-primary">Start Your Growth Journey</Link>
           </div>
         </motion.div>
       </div>

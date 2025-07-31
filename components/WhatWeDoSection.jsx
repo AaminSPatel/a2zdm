@@ -2,41 +2,42 @@
 
 import { motion } from "framer-motion"
 import Link from "next/link"
+import { useState } from "react"
 import { FiSearch, FiBarChart, FiTarget, FiArrowRight } from "react-icons/fi"
+import { useTech } from "./TechContext"
 
 const WhatWeDoSection = () => {
-  const services = [
-    {
-      icon: <FiSearch className="w-6 sm:w-8 h-6 sm:h-8" />,
-      title: "Search Optimization & Visibility",
-      subtitle: "Higher Rankings",
-      description:
-        "Dominate search results with technical SEO, strategic link-earning, and industry-specific optimization that drives qualified traffic.",
-      gradient: "from-cyan-400 to-blue-500",
-      image: "./search.jpg",
-      link: "/services/technical-seo",
-    },
-    {
-      icon: <FiBarChart className="w-6 sm:w-8 h-6 sm:h-8" />,
-      title: "Analytics & Intelligence",
-      subtitle: "Deeper Clarity",
-      description:
-        "Transform raw data into actionable insights with GA4, BigQuery, and Power BI implementations that reveal growth opportunities.",
-      gradient: "from-blue-500 to-purple-500",
-      image: "./a&i.jpg",
-      link: "/services/ga4-setup",
-    },
-    {
-      icon: <FiTarget className="w-6 sm:w-8 h-6 sm:h-8" />,
-      title: "Performance & Compliance Marketing",
-      subtitle: "Measurable Growth",
-      description:
-        "Scale efficiently with performance marketing, cookie compliance, and predictive analytics that maximize ROI and minimize risk.",
-      gradient: "from-purple-500 to-pink-500",
-      image: "./pcm.jpg",
-      link: "/services/ppc-management",
-    },
-  ]
+  const { serviceData } = useTech()
+
+  // Helper to render icon components from string
+  const renderIcon = (iconString) => {
+    switch (iconString) {
+      case "<FiSearch className='w-8 h-8' />":
+        return <FiSearch className="w-6 h-6" />;
+      case "<FiBarChart className='w-8 h-8' />":
+        return <FiBarChart className="w-6 h-6" />;
+      case "<FiTarget className='w-8 h-8' />":
+        return <FiTarget className="w-6 h-6" />;
+      default:
+        return <FiSearch className="w-6 h-6" />;
+    }
+  }
+
+  // Get first three services from all categories
+  const featuredServices = [];
+  serviceData.forEach(category => {
+    Object.entries(category.services || {}).forEach(([slug, service]) => {
+      if (featuredServices.length < 3) {
+        featuredServices.push({
+          ...service,
+          slug,
+          category: category.title,
+          gradient: category.gradient,
+          icon: category.icon
+        })
+      }
+    })
+  })
 
   return (
     <section className="py-16 sm:py-20 bg-secondary-color">
@@ -52,25 +53,24 @@ const WhatWeDoSection = () => {
             What We <span className="gradient-text">Do</span>
           </h2>
           <p className="text-lg sm:text-xl text-color-2 max-w-3xl mx-auto">
-            We combine cutting-edge technology with proven strategies to deliver measurable results across three core
-            areas
+            We combine cutting-edge technology with proven strategies to deliver measurable results across three core areas
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-8 sm:mb-12">
-          {services.map((service, index) => (
+          {featuredServices.map((service, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.2 }}
               viewport={{ once: true }}
-              className=" bg-primary-color border border-color card-hover group cursor-pointer overflow-hidden"
+              className="bg-primary-color border border-color card-hover group cursor-pointer overflow-hidden"
             >
               {/* Service Image */}
               <div className="relative overflow-hidden">
                 <img
-                  src={service.image || "/placeholder.svg"}
+                  src={service.heroImage || "/placeholder.svg"}
                   alt={service.title}
                   className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                 />
@@ -78,7 +78,7 @@ const WhatWeDoSection = () => {
                 <div
                   className={`absolute top-4 left-4 w-12 sm:w-16 h-12 sm:h-16 bg-gradient-to-r ${service.gradient} flex items-center justify-center text-black`}
                 >
-                  {service.icon}
+                  {renderIcon(service.icon)}
                 </div>
               </div>
 
@@ -88,12 +88,16 @@ const WhatWeDoSection = () => {
                   {service.title}
                 </h3>
 
-                <div className="accent-cyan font-semibold mb-4 text-base sm:text-lg">→ {service.subtitle}</div>
+                <div className="accent-cyan font-semibold mb-4 text-base sm:text-lg">
+                  → {service.category}
+                </div>
 
-                <p className="text-color-2 mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">{service.description}</p>
+                <p className="text-color-2 mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">
+                  {service.description}
+                </p>
 
                 <Link
-                  href={service.link}
+                  href={`/services/${service.slug}`}
                   className="flex items-center accent-cyan font-semibold group-hover:translate-x-2 transition-transform text-sm sm:text-base"
                 >
                   Learn More
