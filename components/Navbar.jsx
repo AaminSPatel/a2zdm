@@ -60,11 +60,11 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-to-r from-cyan-400 to-blue-500 flex items-center justify-center rounded-full overflow-hidden">
+            <div className="w-10 h-10 bg-gradient-to-r from-cyan-400 to-blue-500 flex items-center justify-center overflow-hidden">
               <img
-                src="/logo1.png"
+                src="/logo6.png"
                 alt="Logo"
-                className="h-8 w-8 bg-white object-cover"
+                className="h-10 w-10 bg-white object-cover"
               />
             </div>
             <div className="flex flex-col">
@@ -237,7 +237,8 @@ const Navbar = () => {
                   onClick={() => setShowServices(!showServices)}
                   className="flex items-center justify-between w-full text-color-1 hover:accent-cyan"
                 >
-                  <span>Services</span>
+                  <Link href={'/services'}>Services</Link>
+                 
                   <motion.div animate={{ rotate: showServices ? 180 : 0 }}>
                     <FiChevronDown className="w-4 h-4" />
                   </motion.div>

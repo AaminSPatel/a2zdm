@@ -6,14 +6,14 @@ import Link from "next/link"
 const ClientLogos = () => {
   // Mock client logos - in real implementation, these would be actual logo images
   const clients = [
-    { name: "TechStart Solutions", logo: "/placeholder.svg?height=60&width=120&text=TechStart" },
-    { name: "E-Commerce Plus", logo: "/placeholder.svg?height=60&width=120&text=E-Commerce+" },
-    { name: "Digital Dynamics", logo: "/placeholder.svg?height=60&width=120&text=Digital+Dynamics" },
-    { name: "Growth Labs", logo: "/placeholder.svg?height=60&width=120&text=Growth+Labs" },
-    { name: "Market Masters", logo: "/placeholder.svg?height=60&width=120&text=Market+Masters" },
-    { name: "Data Driven Co", logo: "/placeholder.svg?height=60&width=120&text=Data+Driven" },
-    { name: "Scale Solutions", logo: "/placeholder.svg?height=60&width=120&text=Scale+Solutions" },
-    { name: "Performance Pro", logo: "/placeholder.svg?height=60&width=120&text=Performance+Pro" },
+    { name: "TechStart Solutions", logo: "/lg3.png" },
+    { name: "E-Commerce Plus", logo: "/lg2.png" },
+    { name: "Digital Dynamics", logo: "/lg1.png" },
+    { name: "Growth Labs", logo: "/lg3.png" },
+    { name: "Market Masters", logo: "/lg2.png" },
+    { name: "Data Driven Co", logo: "/lg1.png" },
+    { name: "Scale Solutions", logo: "/lg3.png" },
+    { name: "Performance Pro", logo: "/lg2.png" },
   ]
 
   return (
@@ -50,13 +50,14 @@ const ClientLogos = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="flex items-center justify-center p-4 sm:p-6 bg-accent-color border border-color hover:border-cyan-400/50 transition-all duration-300 group"
+              className="flex flex-col  items-center justify-center gap-2 px-4 py-2 sm:p-4 bg-accent-color border border-color hover:border-cyan-400/50 transition-all duration-300 group"
             >
               <img
                 src={client.logo || "/placeholder.svg"}
                 alt={client.name}
-                className="max-w-full h-8 sm:h-12 object-contain opacity-70 group-hover:opacity-100 transition-opacity filter grayscale group-hover:grayscale-0"
+                className="max-w-full h-12 rounded-full sm:h-12 object-contain opacity-70 group-hover:opacity-100 transition-opacity filter grayscale group-hover:grayscale-0"
               />
+              <span>{client.name}</span>
             </motion.div>
           ))}
         </motion.div>
@@ -113,7 +114,7 @@ const ClientLogos = () => {
             <p className="text-color-2 mb-4 sm:mb-6 text-sm sm:text-base">
               Let's discuss how we can help your business achieve similar results with our proven strategies.
             </p>
-             <Link href={'/case-studies'} className="btn-primary">Start Your Growth Journey</Link>
+             <Link href={'/case-studies'} className="btn-primary whitespace-nowrap">Start Your Growth Journey</Link>
           </div>
         </motion.div>
       </div>

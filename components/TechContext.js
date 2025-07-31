@@ -2237,56 +2237,9 @@ export const TechProvider = ({ children }) => {
 ]; 
 
 
-/*  const services = {
-    "SEO Services": {
-      icon: <FiSearch className="w-4 h-4" />,
-      items: [
-        { name: "Technical SEO", href: "/services/technical-seo" },
-        { name: "Link-Earning", href: "/services/link-earning" },
-        { name: "PR & Outreach", href: "/services/pr-outreach" },
-        { name: "Ecommerce SEO", href: "/services/ecommerce-seo" },
-        { name: "CBD SEO", href: "/services/cbd-seo" },
-        { name: "Local SEO", href: "/services/local-seo" },
-      ],
-    },
-    "Digital Analytics": {
-      icon: <FiBarChart className="w-4 h-4" />,
-      items: [
-        { name: "GA4 Setup", href: "/services/ga4-setup" },
-        { name: "Google Tag Manager", href: "/services/gtm" },
-        { name: "Adobe Analytics", href: "/services/adobe-analytics" },
-        { name: "Conversion Tracking", href: "/services/conversion-tracking" },
-      ],
-    },
-    "Performance Marketing": {
-      icon: <FiTarget className="w-4 h-4" />,
-      items: [
-        { name: "Cookie Consent", href: "/services/cookie-consent" },
-        { name: "Tag Monitoring", href: "/services/tag-monitoring" },
-        { name: "Predictive Analytics", href: "/services/predictive-analytics" },
-      ],
-    },
-    "Business Intelligence": {
-      icon: <FiDatabase className="w-4 h-4" />,
-      items: [
-        { name: "Looker Studio", href: "/services/looker-studio" },
-        { name: "BigQuery", href: "/services/bigquery" },
-        { name: "Power BI", href: "/services/power-bi" },
-      ],
-    },
-    "PPC Management": {
-      icon: <FiMousePointer className="w-4 h-4" />,
-      items: [
-        { name: "Pay Per Click", href: "/services/ppc" },
-        { name: "Performance Measurement", href: "/services/performance-measurement" },
-        { name: "Case Studies", href: "/services/case-studies" },
-      ],
-    },
-  } */
 
 const WORDPRESS_API = 'https://a2zdm.com/wp-json/wp/v2';
-//const mobile_number = '9893721848'
-const mobile_number = '7747074810'
+const mobile_number = '9893721848'
   // Fetch wrapper with error handling
   const wpFetch = async (endpoint, method = 'GET', body = null) => {
     const options = {

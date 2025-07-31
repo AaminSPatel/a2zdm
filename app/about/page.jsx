@@ -21,10 +21,10 @@ const About = () => {
     {
       name: "Iliyas Patel",
       position: "Founder & CEO",
-      expertise: "SEO Strategy & Business Development",
+      expertise: "Web Analytics and Digital Marketing",
       experience: "8+ years",
       description:
-        "Visionary leader with expertise in technical SEO and business growth strategies.",
+        "SEO, PPC, ASO and GA, GTM, GA4 at A2ZDM.com",
       initial: "IP",
     },
     {

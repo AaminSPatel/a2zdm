@@ -1,7 +1,10 @@
+'use client'
 import Link from "next/link"
 import { FiTwitter, FiLinkedin, FiFacebook, FiInstagram, FiMail, FiPhone, FiMapPin } from "react-icons/fi"
+import { useTech } from "./TechContext"
 
 const Footer = () => {
+  const {mobile_number} = useTech()
   return (
     <footer className="bg-secondary-color border-t border-color">
       {/* CTA Section */}
@@ -22,9 +25,13 @@ const Footer = () => {
           {/* Company Info */}
           <div className="lg:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-r from-cyan-400 to-blue-500 flex items-center justify-center">
-                <span className="text-black font-bold text-lg">A</span>
-              </div>
+               <div className="w-10 h-10 bg-gradient-to-r from-cyan-400 to-blue-500 flex items-center justify-center overflow-hidden">
+              <img
+                src="/logo6.png"
+                alt="Logo"
+                className="h-10 w-10 bg-white object-cover"
+              />
+            </div>
               <span className="text-xl font-bold font-space-grotesk text-color-1">A2ZDM</span>
             </div>
             <p className="text-color-2 mb-6 max-w-md">
@@ -42,7 +49,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-3 text-color-2">
                 <FiPhone className="w-4 h-4 flex-shrink-0" />
-                <span className="text-sm md:text-base">+91 98765 43210</span>
+                <span className="text-sm md:text-base">+91 {mobile_number}</span>
               </div>
             </div>
           </div>
@@ -88,7 +95,7 @@ const Footer = () => {
             <ul className="space-y-2">
               <li>
                 <Link
-                  href="/services/seo"
+                  href="/services/technical-seo"
                   className="text-color-2 hover:accent-cyan transition-colors text-sm md:text-base"
                 >
                   SEO Services
@@ -96,18 +103,18 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  href="/services/analytics"
+                  href="/services/ga4-analytics"
                   className="text-color-2 hover:accent-cyan transition-colors text-sm md:text-base"
                 >
-                  Analytics
+                  GA4 Analytics
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/services/ppc"
+                  href="/services/performance-measurement"
                   className="text-color-2 hover:accent-cyan transition-colors text-sm md:text-base"
                 >
-                  PPC Management
+                  Performance Measurement
                 </Link>
               </li>
               <li>

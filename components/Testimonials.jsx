@@ -13,12 +13,12 @@ const Testimonials = () => {
     {
       quote:
         "This SEO partnership catapulted us into search success, delivering quality leads month after month. Their data-driven approach and technical expertise transformed our online presence completely.",
-      author: "Fiona Anchal",
+      author: "Mark Bolt",
       position: "Co-founder",
       company: "TechStart Solutions",
       rating: 5,
       results: "+240% organic traffic increase",
-      avatar: "/user4.jpg",
+      avatar: "/u2.jpg",
     },
     {
       quote:
@@ -28,7 +28,7 @@ const Testimonials = () => {
       company: "E-Commerce Plus",
       rating: 5,
       results: "3.2× ROAS improvement",
-      avatar: "/user3.jpeg",
+      avatar: "/u3.jpg",
     },
     {
       quote:
@@ -38,7 +38,7 @@ const Testimonials = () => {
       company: "Elite Home Services",
       rating: 5,
       results: "+290% revenue growth",
-      avatar: "/user5.jpg",
+      avatar: "/u1.jpg",
     },
   ];
 

@@ -148,7 +148,7 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Transform Your Business with <span className="gradient-text">Data-Driven Marketing</span>
+              Driving Growth Through <span className="gradient-text">Smarter Data, Smarter Marketing</span>
             </motion.h1>
 
             <motion.p
@@ -157,8 +157,7 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              We combine advanced SEO strategies, powerful analytics (GA4, BigQuery, Power BI), and performance
-              marketing to deliver measurable growth for E-commerce, SaaS, and local businesses.
+              We help businesses—from E-Commerce to local services—unlock growth by combining powerful SEO, advanced analytics (GA4, Big Query, Power BI), and performance marketing strategies. From technical SEO to predictive analytics, our full-funnel approach ensures you get results you can measure.
             </motion.p>
 
             <motion.div
