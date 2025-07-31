@@ -1,11 +1,33 @@
-
 "use client";
 
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { FiArrowRight, FiTrendingUp, FiDatabase, FiTarget, FiPlay } from "react-icons/fi";
+import { useState, useEffect } from "react";
 
 const HeroSection = () => {
+  const [boxesFit, setBoxesFit] = useState(0);
+  const [deviceWidth, setDeviceWidth] = useState(0);
+
+  useEffect(() => {
+    // This code will only run on the client side
+    const handleResize = () => {
+      const width = window.innerWidth;
+      setDeviceWidth(width);
+      const boxWidth = 70;
+      setBoxesFit(Math.floor(width / boxWidth));
+    };
+
+    // Set initial values
+    handleResize();
+
+    // Add event listener for window resize
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const techIcons = [
     { icon: <FiTrendingUp />, delay: 0.2 },
     { icon: <FiDatabase />, delay: 0.4 },
@@ -18,9 +40,6 @@ const HeroSection = () => {
     { value: "156%", label: "Lead Generation", color: "from-purple-500 to-pink-500" },
     { value: "98%", label: "Client Retention", color: "from-green-400 to-cyan-400" },
   ];
-const deviceWidth = window.innerWidth; // Gets the viewport width in pixels
-const boxWidth = 70;
-const boxesFit = Math.floor(deviceWidth / boxWidth); // Use Math.floor to get whole number
 
   // Function to handle grid hover effect
   const handleGridHover = (e) => {
@@ -56,12 +75,12 @@ const boxesFit = Math.floor(deviceWidth / boxWidth); // Use Math.floor to get wh
       <div className="absolute inset-0">
         {/* Tech Grid Background with hover effect */}
         <div 
-          className="absolute inset-0  tech-gri"
+          className="absolute inset-0 tech-gri"
           onMouseMove={handleGridHover}
           onMouseLeave={resetGridOpacity}
         >
           {/* Create grid items */}
-          {Array.from({ length: 100  }).map((_, i) => (
+          {Array.from({ length: 100 }).map((_, i) => (
             <div 
               key={i}
               className="grid-item absolute border hover:border-cyan-300 border-cyan-700/50 transition duration-500"
@@ -82,7 +101,6 @@ const boxesFit = Math.floor(deviceWidth / boxWidth); // Use Math.floor to get wh
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
       </div>
 
-      
       {/* Floating Tech Icons */}
       <div className="absolute inset-0 hidden lg:block">
         {techIcons.map((item, index) => (
@@ -156,8 +174,7 @@ const boxesFit = Math.floor(deviceWidth / boxWidth); // Use Math.floor to get wh
               <Link href="/case-studies" className="inline-flex items-center justify-center btn-secondary text-center group">
                 <FiPlay className="mr-2 hidden w-5 h-5 group-hover:scale-110 transition-transform" />
                 Explore Case Studies
-                                <FiArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-
+                <FiArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </motion.div>
 

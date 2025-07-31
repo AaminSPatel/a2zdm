@@ -2310,7 +2310,7 @@ const mobile_number = '7747074810'
     return await Promise.all(
       posts.map(async (post) => {
         // Get featured media
-        let imageUrl = '/default-image.jpg';
+        let imageUrl = '/search.jpg';
         let altText = post.title.rendered || 'Blog post image';
         
         if (post.featured_media) {
