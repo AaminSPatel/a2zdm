@@ -19,13 +19,13 @@ const About = () => {
 
   const teamMembers = [
     {
-      name: "Iliyas Patel",
+      name: "Ateeq Patel",
       position: "Founder & CEO",
       expertise: "Web Analytics and Digital Marketing",
       experience: "8+ years",
       description:
         "SEO, PPC, ASO and GA, GTM, GA4 at A2ZDM.com",
-      initial: "IP",
+      initial: "AP",
     },
     {
       name: "Zeeshan Ahmed",
@@ -210,7 +210,7 @@ const About = () => {
                     </div>
                     <div className="text-center">
                       <div className="text-3xl sm:text-4xl font-bold accent-cyan mb-2">
-                        5+
+                        15+
                       </div>
                       <div className="text-color-2 text-sm sm:text-base">
                         Years of Excellence

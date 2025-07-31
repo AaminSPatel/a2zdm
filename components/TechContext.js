@@ -225,7 +225,76 @@ export const TechProvider = ({ children }) => {
         { metric: "Lead Quality", improvement: "+40% conversion rate" }
       ]
     }
-  }
+  },
+  "digital-analytics": {
+      title: "Digital Analytics",
+      category: "Data Services",
+      icon: "<FiBarChart2 className='w-8 h-8' />",
+      heroImage: "/digital-analytics.jpg",
+      description: "Transform raw data into actionable insights to drive business growth and optimization.",
+      longDescription: "Our Digital Analytics services help you implement, configure, and leverage analytics platforms to track user behavior, measure campaign performance, and uncover opportunities for conversion rate optimization across all digital channels.",
+      features: [
+        "Google Analytics 4 implementation",
+        "Custom dashboard development",
+        "Conversion funnel analysis",
+        "Cross-channel attribution modeling",
+        "Real-time reporting solutions"
+      ],
+      benefits: [
+        "Data-driven decision making",
+        "Improved marketing ROI",
+        "Enhanced user experience insights",
+        "Identification of high-value customer segments",
+        "Automated reporting workflows",
+        "Competitive benchmarking"
+      ],
+      process: [
+        {
+          step: "1",
+          title: "Audit & Planning",
+          description: "Comprehensive review of current analytics setup and business objectives."
+        },
+        {
+          step: "2",
+          title: "Implementation",
+          description: "Proper tracking configuration and data layer setup."
+        },
+        {
+          step: "3",
+          title: "Dashboarding",
+          description: "Custom reporting tailored to stakeholder needs."
+        },
+        {
+          step: "4",
+          title: "Insights Delivery",
+          description: "Regular analysis sessions with actionable recommendations."
+        }
+      ],
+      pricing: {
+        starter: { 
+          price: "₹25,000/month", 
+          features: ["Basic Analytics Setup", "Standard Dashboards", "Monthly Insights Report"] 
+        },
+        professional: {
+          price: "₹45,000/month",
+          features: ["Advanced Tracking", "Custom Dashboards", "Weekly Analysis", "Conversion Optimization"]
+        },
+        enterprise: {
+          price: "₹75,000/month",
+          features: ["Multi-channel Attribution", "Predictive Analytics", "Executive Briefings", "Data Governance"]
+        }
+      },
+      caseStudy: {
+        client: "E-commerce Platform",
+        challenge: "Lack of visibility into customer journey and drop-off points",
+        solution: "Implemented enhanced tracking with funnel visualization and segmentation",
+        results: [
+          { metric: "Checkout Completion", improvement: "+28%" },
+          { metric: "Ad Spend Efficiency", improvement: "+35% ROI" },
+          { metric: "Data Accuracy", improvement: "100% reliable tracking" }
+        ]
+      }
+    }
   }
 },
  // digital marketing industry
@@ -903,71 +972,6 @@ export const TechProvider = ({ children }) => {
     }
   },
 
-  "cbd-seo": {
-    title: "CBD SEO",
-    category: "Specialty Ecommerce",
-    icon: "<FiLeaf className='w-8 h-8' />",
-    heroImage: "/cbd.jpg",
-    description: "Navigate complex compliance requirements while ranking for high-value CBD and wellness searches.",
-    longDescription: "Specialized SEO services for CBD brands, hemp products, and wellness companies that carefully balance aggressive search strategies with strict compliance requirements across payment processors, advertising platforms, and search engines.",
-    features: [
-      "Compliant keyword strategy",
-      "Educational content marketing",
-      "Product page optimization",
-      "Alternative payment SEO",
-      "Wellness-focused backlinking"
-    ],
-    benefits: [
-      "Sustainable organic growth",
-      "Compliant search visibility",
-      "Increased product discoverability",
-      "Trust-building content",
-      "Competitive CBD advantage"
-    ],
-    process: [
-      {
-        step: "1",
-        title: "Compliance Audit",
-        description: "Reviewing current content for potential issues"
-      },
-      {
-        step: "2",
-        title: "Educational Strategy",
-        description: "Developing compliant content frameworks"
-      },
-      {
-        step: "3",
-        title: "Product Optimization",
-        description: "Enhancing product pages within guidelines"
-      },
-      {
-        step: "4",
-        title: "Alternative Channels",
-        description: "Building visibility through approved channels"
-      }
-    ],
-    pricing: {
-      starter: { price: "₹22,000/month", features: ["Basic CBD SEO", "Compliance Review", "Monthly Reports"] },
-      professional: {
-        price: "₹45,000/month",
-        features: ["Complete CBD Strategy", "Educational Content", "Product Optimization", "10 Backlinks"]
-      },
-      enterprise: {
-        price: "₹80,000/month",
-        features: ["Enterprise Solution", "Full Compliance Management", "International Targeting", "Daily Monitoring"]
-      }
-    },
-    caseStudy: {
-      client: "CBD Wellness Brand",
-      challenge: "Advertising restrictions limiting growth",
-      solution: "Compliant organic search strategy focusing on educational content",
-      results: [
-        { metric: "Organic Traffic", improvement: "+520%" },
-        { metric: "Product Page Rankings", improvement: "Top 5 for 30+ products" },
-        { metric: "Customer Acquisition Cost", improvement: "-65%" }
-      ]
-    }
-  },
 
 }
   },
@@ -1383,71 +1387,6 @@ export const TechProvider = ({ children }) => {
     }
   },
 
-  "response-management": {
-    title: "Response Management",
-    category: "Data Governance",
-    icon: "<FiInbox className='w-8 h-8' />",
-    heroImage: "/response.jpg",
-    description: "Streamline data subject request fulfillment for GDPR, CCPA, and global privacy regulations.",
-    longDescription: "Implementation and management of systems to efficiently handle data subject access requests (DSARs), deletion requests, and other privacy rights required by global regulations.",
-    features: [
-      "DSAR workflow automation",
-      "Identity verification",
-      "Data inventory integration",
-      "Request tracking",
-      "Compliance reporting"
-    ],
-    benefits: [
-      "Meet regulatory deadlines",
-      "Reduce manual effort",
-      "Maintain compliance",
-      "Improve customer trust",
-      "Centralize request management"
-    ],
-    process: [
-      {
-        step: "1",
-        title: "Assessment",
-        description: "Evaluating current request handling processes"
-      },
-      {
-        step: "2",
-        title: "System Design",
-        description: "Creating workflows for different request types"
-      },
-      {
-        step: "3",
-        title: "Integration",
-        description: "Connecting with data systems and inventories"
-      },
-      {
-        step: "4",
-        title: "Automation",
-        description: "Implementing automated components where possible"
-      }
-    ],
-    pricing: {
-      starter: { price: "₹30,000", features: ["Basic Workflow Setup", "Manual Processing", "Template Responses"] },
-      professional: {
-        price: "₹70,000",
-        features: ["Automated System", "Identity Verification", "3 System Integrations", "Basic Reporting"]
-      },
-      enterprise: {
-        price: "₹150,000",
-        features: ["Enterprise Solution", "Full Automation", "Unlimited Integrations", "Advanced Analytics"]
-      }
-    },
-    caseStudy: {
-      client: "Financial Services Company",
-      challenge: "Struggling with 100+ monthly DSARs",
-      solution: "Automated response management system with identity verification",
-      results: [
-        { metric: "Processing Time", improvement: "-85%" },
-        { metric: "Staff Hours", improvement: "-90%" },
-        { metric: "Compliance Rate", improvement: "100% on-time" }
-      ]
-    }
-  }
   }
 },
 //Predictive Analytics
@@ -1929,6 +1868,78 @@ export const TechProvider = ({ children }) => {
       ]
     }
   },
+  
+    "python-for-bi": {
+      title: "Python for BI",
+      category: "Data Services",
+      icon: "<FiCode className='w-8 h-8' />",
+      heroImage: "/pythonbi.jpg",
+      description: "Leverage Python's powerful data ecosystem to supercharge your business intelligence capabilities.",
+      longDescription: "We implement Python-based BI solutions that go beyond traditional tools, enabling advanced data manipulation, predictive analytics, and automated reporting workflows that scale with your business needs.",
+      features: [
+        "Custom ETL pipelines",
+        "Automated reporting systems",
+        "Predictive modeling integration",
+        "Interactive dashboard development",
+        "Data quality monitoring",
+        "ML-powered insights"
+      ],
+      benefits: [
+        "Handle larger datasets than traditional BI tools",
+        "Custom analytics tailored to your business",
+        "Reduced manual reporting work",
+        "Future-proof analytics infrastructure",
+        "Integration with data science workflows",
+        "Open-source cost savings"
+      ],
+      process: [
+        {
+          step: "1",
+          title: "Requirement Analysis",
+          description: "Understanding current workflows and pain points."
+        },
+        {
+          step: "2",
+          title: "Data Pipeline Design",
+          description: "Architecting efficient data transformation processes."
+        },
+        {
+          step: "3",
+          title: "Solution Development",
+          description: "Building custom Python applications for your BI needs."
+        },
+        {
+          step: "4",
+          title: "Deployment & Training",
+          description: "Implementation and knowledge transfer to your team."
+        }
+      ],
+      pricing: {
+        starter: { 
+          price: "₹30,000/month", 
+          features: ["Basic Automation", "Standard Reports", "Monthly Maintenance"] 
+        },
+        professional: {
+          price: "₹55,000/month",
+          features: ["Custom Dashboards", "Advanced Analytics", "Weekly Updates", "API Integrations"]
+        },
+        enterprise: {
+          price: "₹90,000/month",
+          features: ["End-to-End BI System", "Predictive Models", "24/7 Support", "Team Training"]
+        }
+      },
+      caseStudy: {
+        client: "Financial Services Firm",
+        challenge: "Manual reporting processes consuming 40+ hours weekly",
+        solution: "Developed Python-based automated reporting system with anomaly detection",
+        results: [
+          { metric: "Reporting Time", improvement: "-90%" },
+          { metric: "Insight Discovery", improvement: "3x faster" },
+          { metric: "Data Errors", improvement: "Reduced to near-zero" }
+        ]
+      }
+    }
+  
  }
   },
 
@@ -2239,7 +2250,7 @@ export const TechProvider = ({ children }) => {
 
 
 const WORDPRESS_API = 'https://a2zdm.com/wp-json/wp/v2';
-const mobile_number = '9893721848'
+const mobile_number = '9826739671'
   // Fetch wrapper with error handling
   const wpFetch = async (endpoint, method = 'GET', body = null) => {
     const options = {

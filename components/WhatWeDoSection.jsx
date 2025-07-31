@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { useState } from "react"
-import { FiSearch, FiBarChart, FiTarget, FiArrowRight } from "react-icons/fi"
+import { FiSearch, FiBarChart, FiTarget, FiArrowRight, FiCode, FiMic } from "react-icons/fi"
 import { useTech } from "./TechContext"
 
 const WhatWeDoSection = () => {
@@ -18,22 +18,28 @@ const WhatWeDoSection = () => {
         return <FiBarChart className="w-6 h-6" />;
       case "<FiTarget className='w-8 h-8' />":
         return <FiTarget className="w-6 h-6" />;
+      case "<FiCode className='w-8 h-8' />":
+        return <FiCode className="w-6 h-6" />;
+      case "<FiMic className='w-8 h-8' />":
+        return <FiMic className="w-6 h-6" />;
       default:
         return <FiSearch className="w-6 h-6" />;
     }
   }
 
-  // Get first three services from all categories
+  // Get specific services by slug
   const featuredServices = [];
+  const specifiedServices = ["digital-analytics","pr-industry-seo",  "technical-seo"];
+  
   serviceData.forEach(category => {
     Object.entries(category.services || {}).forEach(([slug, service]) => {
-      if (featuredServices.length < 3) {
+      if (specifiedServices.includes(slug)) {
         featuredServices.push({
           ...service,
           slug,
           category: category.title,
           gradient: category.gradient,
-          icon: category.icon
+          icon: service.icon || category.icon // Use service-specific icon if available
         })
       }
     })
@@ -53,7 +59,7 @@ const WhatWeDoSection = () => {
             What We <span className="gradient-text">Do</span>
           </h2>
           <p className="text-lg sm:text-xl text-color-2 max-w-3xl mx-auto">
-            We combine cutting-edge technology with proven strategies to deliver measurable results across three core areas
+            We combine cutting-edge technology with proven strategies to deliver measurable results across our core services
           </p>
         </motion.div>
 
@@ -119,7 +125,7 @@ const WhatWeDoSection = () => {
             href="/services"
             className="inline-flex items-center bg-gradient-to-r from-cyan-400 to-blue-500 text-black px-6 sm:px-8 py-3 sm:py-4 font-semibold hover:from-cyan-300 hover:to-blue-400 transition-all duration-300 group"
           >
-            Discover how we do it
+            View all services
             <FiArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Link>
         </motion.div>

@@ -182,119 +182,108 @@ const ServiceDetail = () => {
           </div>
         </div>
       </section>
-
-      {/* Process */}
-      <section className="py-20 bg-secondary-color">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl font-bold mb-6 font-space-grotesk text-color-1">
-              Our <span className="gradient-text">Process</span>
-            </h2>
-            <p className="text-xl text-color-2 max-w-3xl mx-auto">
-              A proven methodology that delivers consistent results
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {service.process?.map((step, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="text-center"
-              >
-                <div className="w-16 h-16 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-black font-bold text-xl">
-                    {step.step}
-                  </span>
-                </div>
-                <h3 className="text-xl font-bold mb-3 text-color-1">
-                  {step.title}
-                </h3>
-                <p className="text-color-2 text-sm leading-relaxed">
-                  {step.description}
-                </p>
-              </motion.div>
-            ))}
-          </div>
+<section className="relative">
+  {/* Combined Container */}
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 lg:py-20">
+    <div className="flex flex-col lg:flex-row gap-8 xl:gap-12">
+      {/* Process Section (Left) */}
+      <motion.div 
+        initial={{ opacity: 0, x: -30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="lg:w-2/3 bg-secondary-color p-6 md:p-8 rounded-lg"
+      >
+        <div className="text-center mb-8">
+          <h2 className="text-3xl md:text-4xl font-bold mb-2 font-space-grotesk text-color-1">
+            Our <span className="gradient-text">Process</span>
+          </h2>
+          <p className="text-color-2 md:text-xl max-w-3xl mx-auto">
+            A proven methodology that delivers consistent results
+          </p>
         </div>
-      </section>
 
-      {/* Case Study */}
-      {service.caseStudy && (
-        <section className="py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {service.process?.map((step, index) => (
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="bg-secondary-color border border-color p-8"
+              className="text-center p-4"
             >
-              <div className="text-center mb-12">
-                <h2 className="text-4xl font-bold mb-6 font-space-grotesk text-color-1">
-                  Success <span className="gradient-text">Story</span>
-                </h2>
-                <p className="text-xl text-color-2">
-                  Real results from a recent client project
-                </p>
+              <div className="w-14 h-14 md:w-16 md:h-16 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-black font-bold text-lg md:text-xl">
+                  {step.step}
+                </span>
               </div>
+              <h3 className="text-lg md:text-xl font-bold mb-2 text-color-1">
+                {step.title}
+              </h3>
+              <p className="text-color-2 text-sm md:text-base leading-relaxed">
+                {step.description}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
 
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      {/* Case Study Section (Right) */}
+      {service.caseStudy && (
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="lg:w-1/3 bg-secondary-color border border-color p-6 md:p-8 rounded-lg"
+        >
+          <div className="text-center mb-6">
+            <h2 className="text-2xl md:text-3xl font-bold mb-2 font-space-grotesk">
+              Success <span className="gradient-text">Story</span>
+            </h2>
+            <p className="text-color-2">Client project highlights</p>
+          </div>
+
+          <div className="space-y-6">
+            <div>
+              <h3 className="text-lg md:text-xl font-bold mb-3">{service.caseStudy.client}</h3>
+              <div className="space-y-3 text-sm md:text-base">
                 <div>
-                  <h3 className="text-2xl font-bold mb-4 text-color-1">
-                    {service.caseStudy.client}
-                  </h3>
-                  <div className="space-y-4">
-                    <div>
-                      <h4 className="font-semibold mb-2 text-color-3">
-                        Challenge:
-                      </h4>
-                      <p className="text-color-2">
-                        {service.caseStudy.challenge}
-                      </p>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold mb-2 text-color-3">
-                        Solution:
-                      </h4>
-                      <p className="text-color-2">
-                        {service.caseStudy.solution}
-                      </p>
-                    </div>
+                  <h4 className="font-semibold text-color-3">Challenge:</h4>
+                  <p className="text-color-2">{service.caseStudy.challenge}</p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-color-3">Solution:</h4>
+                  <p className="text-color-2">{service.caseStudy.solution}</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              {service.caseStudy.results?.map((result, i) => (
+                <div 
+                  key={i} 
+                  className="bg-secondary-color border border-color p-3 md:p-4 text-center"
+                >
+                  <div className="text-lg md:text-xl font-bold text-color-3">
+                    {result.improvement}
+                  </div>
+                  <div className="text-xs md:text-sm text-color-2">
+                    {result.metric}
                   </div>
                 </div>
-
-                <div className="grid grid-cols-1 gap-6">
-                  {service.caseStudy.results?.map((result, index) => (
-                    <div
-                      key={index}
-                      className="bg-secondary-color border border-color p-6 text-center"
-                    >
-                      <div className="text-3xl font-bold text-color-3 mb-2">
-                        {result.improvement}
-                      </div>
-                      <div className="text-color-2">{result.metric}</div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
+              ))}
+            </div>
           </div>
-        </section>
+        </motion.div>
       )}
-
+    </div>
+  </div>
+</section>
 
       {/* Pricing */}
-      {service.pricing && (
+      {/* {service.pricing && (
         <section className="py-20 bg-secondary-color">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
@@ -378,7 +367,7 @@ Please contact me to proceed.`;
             </div>
           </div>
         </section>
-      )}
+      )} */}
 
      {/* CTA */}
 <section className="py-20 bg-primary-color">
@@ -397,16 +386,13 @@ Please contact me to proceed.`;
         your business
       </p>
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
-        <a
-          href={`https://wa.me/91${mobile_number}?text=${encodeURIComponent(
-            `Hi A2ZDM Team, I'd like to schedule a free consultation about your ${service.title} service. Please share available time slots.`
-          )}`}
-          target="_blank"
-          rel="noopener noreferrer"
+        <Link
+          href={`/contact`}
+          
           className="btn-primary"
         >
           Schedule Free Consultation
-        </a>
+        </Link>
         <Link href="/case-studies" className="btn-secondary">
           View More Case Studies
         </Link>

@@ -119,10 +119,10 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  href="/services/business-intelligence"
+                  href="/services/customer-segmentation"
                   className="text-color-2 hover:accent-cyan transition-colors text-sm md:text-base"
                 >
-                  Business Intelligence
+                  Customer Segmentation
                 </Link>
               </li>
             </ul>
