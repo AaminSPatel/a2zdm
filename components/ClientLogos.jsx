@@ -149,41 +149,7 @@ const ClientLogos = () => {
           ))}
         </motion.div>
 
-        {/* Glowing CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center"
-        >
-          <div className="relative bg-primary-color/50 border border-cyan-400/30 p-8 sm:p-10 rounded-2xl max-w-2xl mx-auto overflow-hidden">
-            {/* Animated background elements */}
-            <div className="absolute -top-20 -left-20 w-40 h-40 bg-cyan-400/10 rounded-full filter blur-3xl"></div>
-            <div className="absolute -bottom-20 -right-20 w-40 h-40 bg-blue-400/10 rounded-full filter blur-3xl"></div>
-            
-            <h3 className="text-xl sm:text-2xl font-bold mb-4 font-space-grotesk relative z-10">
-              Ready to Elevate Your Brand?
-            </h3>
-            <p className="text-color-2 mb-6 text-sm sm:text-base relative z-10">
-              Join our roster of industry-leading clients and experience transformative digital growth.
-            </p>
-            <Link 
-              href="/contact" 
-              className="btn-primary inline-flex items-center group relative z-10"
-            >
-              Become Our Partner
-              <svg 
-                xmlns="http://www.w3.org/2000/svg" 
-                viewBox="0 0 20 20" 
-                fill="currentColor" 
-                className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform"
-              >
-                <path fillRule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clipRule="evenodd" />
-              </svg>
-            </Link>
-          </div>
-        </motion.div>
+        
       </div>
     </section>
   )

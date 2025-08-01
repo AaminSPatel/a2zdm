@@ -1,369 +1,292 @@
 "use client"
-
 import { motion } from "framer-motion"
-import Link from "next/link"
-import Navbar from "../../components/Navbar"
-import Footer from "../../components/Footer"
-import { FiArrowRight, FiCalendar, FiTag } from "react-icons/fi"
+import { FiArrowRight, FiExternalLink, FiAward } from "react-icons/fi"
+import { FaChartLine, FaSearch, FaShoppingCart, FaMobileAlt, FaUsers, FaClock } from "react-icons/fa"
 
 const CaseStudies = () => {
   const caseStudies = [
     {
       id: 1,
-      title: "E-commerce Growth: 340% Revenue Increase",
-      client: "TechGear Store",
-      industry: "E-commerce",
-      challenge: "Low organic traffic and poor conversion rates were limiting growth potential",
-      solution: "Comprehensive SEO strategy combined with conversion rate optimization and performance marketing",
-      duration: "8 months",
-      image: "/ecomseo.jpg",
+      client: "Giggle Tree",
+      title: "From Invisible to AI-Cited: Google's Recommended Childcare Expert",
+      overview: "Transformed from digital obscurity to being featured in Google's AI Overview as the authoritative source for childcare business consulting in Australia.",
+      image: "/casestudy_giggletree.jpg",
+      logo: "/gigglelogo.png",
+      website: "https://www.giggletree.com.au",
+      challenge: "Despite having valuable expertise, Giggle Tree was nearly invisible online - not showing up in search results, with low inconsistent traffic, and unknown to potential clients searching for childcare licensing help.",
+      solution: "We implemented an AI-optimized SEO strategy combining technical fixes with authority-building content designed to be recognized by both search engines and AI systems. Our approach focused on E-E-A-T signals and question-answering content that Google's AI Overview prioritizes.",
       results: [
-        { metric: "Revenue Growth", value: "+340%", color: "text-green-400" },
-        { metric: "Organic Traffic", value: "+280%", color: "text-cyan-400" },
-        { metric: "Conversion Rate", value: "+156%", color: "text-blue-400" },
-        { metric: "ROAS", value: "4.2x", color: "text-purple-400" },
+        { metric: "AI Overview Citation", value: "Featured", icon: <FiAward /> },
+        { metric: "Page 1 Rankings", value: "12+", icon: <FaSearch /> },
+        { metric: "Organic Traffic", value: "275%", icon: <FaChartLine /> },
+        { metric: "Branded Searches", value: "400%", icon: <FaUsers /> },
+        { metric: "Lead Quality", value: "190%", icon: <FaShoppingCart /> },
+        { metric: "Visibility Time", value: "4 Months", icon: <FaClock /> }
       ],
-      services: ["Technical SEO", "Performance Marketing", "Analytics Setup"],
+      strategy: [
+        {
+          title: "AI-Optimized Content",
+          description: "Developed expertise-focused content structured for AI comprehension and citation"
+        },
+        {
+          title: "Technical SEO Foundation",
+          description: "Fixed critical errors and improved crawlability for search systems"
+        },
+        {
+          title: "Authority Signals",
+          description: "Built authoritative backlinks from niche directories and publications"
+        },
+        {
+          title: "Question-Focused Optimization",
+          description: "Targeted 'how' and 'why' questions that AI Overviews prioritize"
+        }
+      ],
       testimonial: {
-        quote:
-          "The results exceeded our expectations. Our revenue has more than tripled, and we're now the market leader in our niche.",
-        author: "Sarah Johnson",
-        position: "CEO, TechGear Store",
+        quote: "Before working with A2ZDM, we knew we had valuable expertise—but no one could find us. In just months, we went from invisible to being cited by Google's AI as a trusted expert!",
+        author: "Emily Richardson",
+        position: "Founder & CEO, Giggle Tree"
       },
+      aiShowcase: {
+        query: "childcare business consultant in Australia",
+        screenshot: "/giggle2.png",
+        impact: "Cited by name in Google's AI Overview above directories and high-authority sites"
+      }
     },
     {
       id: 2,
-      title: "SaaS Platform: 500% Lead Generation Boost",
-      client: "CloudSync Solutions",
-      industry: "SaaS",
-      challenge: "Struggling to generate qualified leads and compete with established players",
-      solution: "Content marketing strategy, technical SEO, and advanced analytics implementation",
-      duration: "6 months",
-      image: "/ecomseo.jpg",
+      client: "The Uniform Edit (TUE)",
+      title: "School Uniform Retail Reinvention",
+      overview: "Complete digital reinvention for Australia's premium school uniform provider, solving seasonal demand challenges and creating year-round engagement.",
+      image: "/tue.jpg",
+      logo: "/tue.jpg",
+      website: "https://www.theuniformedit.com.au",
+      challenge: "TUE faced extreme seasonal peaks (80% of revenue in 2 months), high cart abandonment, and inefficient inventory management. Their digital experience couldn't handle back-to-school traffic surges.",
+      solution: "We developed a holistic solution including: demand forecasting algorithms, streamlined checkout flows, inventory management integrations, and a year-round engagement strategy through content and loyalty programs. Our technical infrastructure improvements ensured 100% uptime during peak periods.",
       results: [
-        { metric: "Qualified Leads", value: "+500%", color: "text-green-400" },
-        { metric: "Organic Rankings", value: "+245%", color: "text-cyan-400" },
-        { metric: "Trial Conversions", value: "+180%", color: "text-blue-400" },
-        { metric: "Customer LTV", value: "+120%", color: "text-purple-400" },
+        { metric: "Online Orders", value: "400%", icon: <FaShoppingCart /> },
+        { metric: "Checkout Completion", value: "220%", icon: <FaChartLine /> },
+        { metric: "Peak Traffic Capacity", value: "10x", icon: <FaUsers /> },
+        { metric: "Off-Season Sales", value: "180%", icon: <FaClock /> },
+        { metric: "Inventory Accuracy", value: "99.8%", icon: <FaSearch /> },
+        { metric: "Mobile Conversions", value: "250%", icon: <FaMobileAlt /> }
       ],
-      services: ["Content Strategy", "Technical SEO", "GA4 Setup"],
-      testimonial: {
-        quote:
-          "A2ZDM transformed our digital presence. We went from struggling to get leads to having a consistent pipeline of qualified prospects.",
-        author: "Michael Chen",
-        position: "Founder, CloudSync Solutions",
-      },
-    },
-    {
-      id: 3,
-      title: "Local Service Business: Market Domination",
-      client: "Elite Home Services",
-      industry: "Local Services",
-      challenge: "Invisible in local search results with high customer acquisition costs",
-      solution: "Local SEO optimization, Google My Business enhancement, and targeted PPC campaigns",
-      duration: "4 months",
-      image: "/a&i.jpg",
-      results: [
-        { metric: "Local Rankings", value: "#1 Position", color: "text-green-400" },
-        { metric: "Phone Calls", value: "+420%", color: "text-cyan-400" },
-        { metric: "Cost Per Lead", value: "-65%", color: "text-blue-400" },
-        { metric: "Revenue Growth", value: "+290%", color: "text-purple-400" },
+      strategy: [
+        {
+          title: "Peak Season Preparedness",
+          description: "Implemented auto-scaling infrastructure and queue management for traffic surges"
+        },
+        {
+          title: "Dynamic Bundling System",
+          description: "Created intelligent uniform packages based on school requirements"
+        },
+        {
+          title: "Virtual Sizing Tools",
+          description: "Developed AR-powered sizing recommendations to reduce returns"
+        },
+        {
+          title: "Year-Round Engagement",
+          description: "Launched educational content hub and uniform care program"
+        }
       ],
-      services: ["Local SEO", "PPC Management", "Reputation Management"],
       testimonial: {
-        quote:
-          "We now dominate our local market. Our phone rings constantly with qualified leads, and our revenue has nearly tripled.",
-        author: "David Rodriguez",
-        position: "Owner, Elite Home Services",
-      },
-    },
-    {
-      id: 4,
-      title: "B2B Manufacturing: Digital Transformation",
-      client: "Precision Parts Co.",
-      industry: "Manufacturing",
-      challenge: "Outdated digital presence with minimal online lead generation",
-      solution: "Complete digital overhaul including technical SEO, content marketing, and advanced analytics",
-      duration: "10 months",
-      image: "/gtm.jpg",
-      results: [
-        { metric: "Online Inquiries", value: "+380%", color: "text-green-400" },
-        { metric: "Organic Visibility", value: "+220%", color: "text-cyan-400" },
-        { metric: "Sales Cycle", value: "-40%", color: "text-blue-400" },
-        { metric: "Deal Size", value: "+85%", color: "text-purple-400" },
-      ],
-      services: ["Technical SEO", "Content Marketing", "Analytics Setup"],
-      testimonial: {
-        quote:
-          "A2ZDM helped us transition from traditional sales to a modern, data-driven approach. Our online presence now generates significant business.",
-        author: "Jennifer Walsh",
-        position: "Marketing Director, Precision Parts Co.",
-      },
-    },
-    {
-      id: 5,
-      title: "Healthcare Practice: Patient Acquisition Success",
-      client: "Advanced Dental Care",
-      industry: "Healthcare",
-      challenge: "Difficulty attracting new patients in a competitive market",
-      solution: "Local SEO, reputation management, and targeted advertising campaigns",
-      duration: "5 months",
-      image: "/link.jpg",
-      results: [
-        { metric: "New Patients", value: "+250%", color: "text-green-400" },
-        { metric: "Online Reviews", value: "+400%", color: "text-cyan-400" },
-        { metric: "Appointment Bookings", value: "+180%", color: "text-blue-400" },
-        { metric: "Practice Revenue", value: "+160%", color: "text-purple-400" },
-      ],
-      services: ["Local SEO", "Reputation Management", "PPC Management"],
-      testimonial: {
-        quote:
-          "Our practice has never been busier. We've had to expand our team to handle all the new patients coming through our digital channels.",
-        author: "Dr. Amanda Foster",
-        position: "Owner, Advanced Dental Care",
-      },
-    },
-    {
-      id: 6,
-      title: "Startup Success: From Zero to Market Leader",
-      client: "GreenTech Innovations",
-      industry: "Clean Technology",
-      challenge: "New company with no online presence or brand recognition",
-      solution: "Complete digital marketing strategy from ground up including SEO, content, and performance marketing",
-      duration: "12 months",
-      image: "/pcm.jpg",
-      results: [
-        { metric: "Brand Awareness", value: "+1200%", color: "text-green-400" },
-        { metric: "Website Traffic", value: "+850%", color: "text-cyan-400" },
-        { metric: "Lead Quality", value: "+300%", color: "text-blue-400" },
-        { metric: "Market Share", value: "15%", color: "text-purple-400" },
-      ],
-      services: ["Brand Strategy", "SEO", "Content Marketing", "PPC"],
-      testimonial: {
-        quote:
-          "A2ZDM didn't just help us grow - they helped us become the recognized leader in our industry in just one year.",
-        author: "Robert Kim",
-        position: "CEO, GreenTech Innovations",
-      },
-    },
+        quote: "The A2ZDM team revolutionized how we operate digitally. Our back-to-school chaos turned into smooth operations, and we're now acquiring customers year-round instead of just seasonal peaks.",
+        author: "Michael Tan",
+        position: "Operations Director, The Uniform Edit"
+      }
+    }
   ]
 
   return (
-    <>
+    <div className="bg-primary-color">
+      {/* Hero Section */}
+      <section className="relative h-screen max-h-[800px] flex items-center justify-center bg-gradient-to-br from-cyan-900/30 to-blue-900/30 overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/case-study-hero-bg.jpg')] bg-cover bg-center opacity-30"></div>
+        <motion.div 
+          className="relative max-w-7xl px-6 text-center"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 font-space-grotesk text-white">
+            Digital <span className="gradient-text">Success</span> Stories
+          </h1>
+          <p className="text-xl text-cyan-100 max-w-3xl mx-auto mb-8">
+            How we helped visionary brands achieve remarkable growth through strategic digital transformation
+          </p>
+        </motion.div>
+      </section>
 
-      <main className="min-h-screen bg-primary-color">
-        {/* Hero Section */}
-        <section className="py-20 bg-secondary-color">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-center mb-16"
-            >
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 font-space-grotesk text-color-1">
-                Success <span className="gradient-text">Stories</span>
-              </h1>
-              <p className="text-xl text-color-2 max-w-3xl mx-auto">
-                Real results from real businesses. See how we've helped companies across industries achieve remarkable
-                growth through data-driven digital marketing strategies.
-              </p>
-            </motion.div>
-
-            {/* Stats Overview */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16"
-            >
-              {[
-                { value: "50+", label: "Success Stories" },
-                { value: "340%", label: "Avg. Revenue Growth" },
-                { value: "98%", label: "Client Retention" },
-                { value: "24/7", label: "Support Available" },
-              ].map((stat, index) => (
-                <div key={index} className="text-center">
-                  <div className="text-3xl md:text-4xl font-bold accent-cyan mb-2">{stat.value}</div>
-                  <div className="text-color-2">{stat.label}</div>
+      {/* Case Studies */}
+      <section className="py-20 bg-secondary-color">
+        <div className="max-w-7xl mx-auto px-6">
+          {caseStudies.map((study, index) => (
+            <div key={study.id} className="mb-28">
+              {/* Overview Section */}
+              <motion.div 
+                className="flex flex-col lg:flex-row gap-12 items-center mb-16"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+              >
+                {/* Image Showcase */}
+                <div className="lg:w-1/2 relative group">
+                  <div className="relative overflow-hidden rounded-xl shadow-2xl">
+                    <img 
+                      src={study.image} 
+                      alt={study.title} 
+                      className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+                  </div>
+                  <div className="absolute -bottom-6 -right-6 bg-white p-4 rounded-lg shadow-lg w-32 h-32 flex items-center justify-center">
+                    <img src={study.logo} alt={`${study.client} logo`} className="max-w-full max-h-full object-contain" />
+                  </div>
                 </div>
-              ))}
-            </motion.div>
-          </div>
-        </section>
 
-        {/* Case Studies Grid */}
-        <section className="py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="space-y-16">
-              {caseStudies.map((study, index) => (
-                <motion.div
-                  key={study.id}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: index * 0.1 }}
+                {/* Basic Info */}
+                <div className="lg:w-1/2">
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="bg-cyan-400/10 text-cyan-400 px-3 py-1 text-sm font-medium rounded-full">
+                      Featured Project
+                    </span>
+                    <a 
+                      href={study.website} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1 text-color-2 hover:text-cyan-400 transition-colors text-sm"
+                    >
+                      Visit Website <FiExternalLink className="w-3 h-3" />
+                    </a>
+                  </div>
+                  
+                  <h2 className="text-3xl md:text-4xl font-bold mb-4 font-space-grotesk text-color-1">
+                    {study.client}
+                  </h2>
+                  <h3 className="text-xl text-cyan-400 mb-6">{study.title}</h3>
+                  <p className="text-lg text-color-2 mb-8">{study.overview}</p>
+                  
+                  {/* Results */}
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+                    {study.results.map((result, i) => (
+                      <div key={i} className="bg-primary-color/50 border border-color p-4 rounded-lg">
+                        <div className="text-cyan-400 mb-2">{result.icon}</div>
+                        <div className="text-2xl font-bold text-color-1 mb-1">{result.value}</div>
+                        <div className="text-sm text-color-2">{result.metric}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* AI Showcase (for Giggle Tree) */}
+              {study.aiShowcase && (
+                <motion.div 
+                  className="bg-gradient-to-r from-cyan-900/20 to-blue-900/20 border-l-4 border-cyan-400 p-8 rounded-r-lg mb-16"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ duration: 0.6, delay: 0.3 }}
                   viewport={{ once: true }}
-                  className="bg-secondary-color border border-color overflow-hidden"
                 >
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
-                    {/* Image */}
-                    <div className="relative">
-                      <img
-                        src={study.image || "/placeholder.svg"}
-                        alt={study.title}
-                        className="w-full h-64 lg:h-full object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-r from-cyan-900/20 to-blue-900/20"></div>
-                      <div className="absolute top-4 left-4">
-                        <span className="bg-accent-cyan text-black px-3 py-1 text-sm font-semibold">
-                          {study.industry}
-                        </span>
+                  <div className="flex flex-col md:flex-row gap-8 items-center">
+                    <div className="md:w-2/3">
+                      <h3 className="text-2xl font-bold mb-4 text-white">The AI Recognition Breakthrough</h3>
+                      <p className="text-cyan-100 mb-4">
+                        When users searched <strong>"{study.aiShowcase.query}"</strong>, Google's AI Overview cited {study.client} as a trusted expert.
+                      </p>
+                      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                        <div className="bg-white/10 p-3 rounded-lg">
+                          <div className="text-cyan-400 text-xl font-bold">AI-Cited</div>
+                          <div className="text-cyan-100 text-sm">Authority Status</div>
+                        </div>
+                        <div className="bg-white/10 p-3 rounded-lg">
+                          <div className="text-cyan-400 text-xl font-bold">Zero-Click</div>
+                          <div className="text-cyan-100 text-sm">Top Visibility</div>
+                        </div>
+                        <div className="bg-white/10 p-3 rounded-lg">
+                          <div className="text-cyan-400 text-xl font-bold">4 Months</div>
+                          <div className="text-cyan-100 text-sm">To Achieve</div>
+                        </div>
                       </div>
                     </div>
-
-                    {/* Content */}
-                    <div className="p-8">
-                      <div className="flex items-center space-x-4 mb-4">
-                        <FiCalendar className="w-4 h-4 text-color-2" />
-                        <span className="text-sm text-color-2">{study.duration} project</span>
-                        <FiTag className="w-4 h-4 text-color-2" />
-                        <span className="text-sm text-color-2">{study.client}</span>
-                      </div>
-
-                      <h2 className="text-2xl md:text-3xl font-bold mb-4 font-space-grotesk text-color-1">
-                        {study.title}
-                      </h2>
-
-                      <div className="space-y-4 mb-6">
-                        <div>
-                          <h3 className="font-semibold accent-cyan mb-2">Challenge:</h3>
-                          <p className="text-color-2 text-sm">{study.challenge}</p>
-                        </div>
-                        <div>
-                          <h3 className="font-semibold accent-cyan mb-2">Solution:</h3>
-                          <p className="text-color-2 text-sm">{study.solution}</p>
-                        </div>
-                      </div>
-
-                      {/* Results Grid */}
-                      <div className="grid grid-cols-2 gap-4 mb-6">
-                        {study.results.map((result, resultIndex) => (
-                          <div key={resultIndex} className="bg-accent-color border border-color p-4 text-center">
-                            <div className={`text-2xl font-bold ${result.color} mb-1`}>{result.value}</div>
-                            <div className="text-xs text-color-2">{result.metric}</div>
-                          </div>
-                        ))}
-                      </div>
-
-                      {/* Services Used */}
-                      <div className="mb-6">
-                        <h3 className="font-semibold text-color-1 mb-2">Services Used:</h3>
-                        <div className="flex flex-wrap gap-2">
-                          {study.services.map((service, serviceIndex) => (
-                            <span
-                              key={serviceIndex}
-                              className="bg-cyan-400/10 border border-cyan-400/30 px-3 py-1 text-xs accent-cyan"
-                            >
-                              {service}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Testimonial */}
-                      <div className="bg-accent-color border-l-4 border-cyan-400 p-4 mb-6">
-                        <p className="text-color-2 italic mb-3">"{study.testimonial.quote}"</p>
-                        <div className="text-sm">
-                          <div className="font-semibold text-color-1">{study.testimonial.author}</div>
-                          <div className="text-color-2">{study.testimonial.position}</div>
-                        </div>
-                      </div>
-
-                      <Link
-                        href={`/case-studies/${study.id}`}
-                        className="inline-flex items-center space-x-2 accent-cyan hover:text-cyan-300 transition-colors font-semibold"
-                      >
-                        <span>Read Full Case Study</span>
-                        <FiArrowRight className="w-4 h-4" />
-                      </Link>
+                    <div className="md:w-1/3 bg-white p-2 rounded-lg shadow-xl">
+                      <img 
+                        src={study.aiShowcase.screenshot} 
+                        alt={`${study.client} in Google AI Overview`}
+                        className="rounded-md"
+                      />
                     </div>
                   </div>
                 </motion.div>
-              ))}
+              )}
+
+              {/* Challenge & Solution */}
+              <motion.div 
+                className="grid md:grid-cols-2 gap-8 mb-16"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: true }}
+              >
+                <div className="bg-primary-color border border-color p-6 rounded-xl">
+                  <h3 className="text-xl font-bold mb-4 text-color-1 flex items-center gap-2">
+                    <span className="w-4 h-4 bg-red-500 rounded-full"></span>
+                    The Challenge
+                  </h3>
+                  <p className="text-color-2">{study.challenge}</p>
+                </div>
+                <div className="bg-primary-color border border-color p-6 rounded-xl">
+                  <h3 className="text-xl font-bold mb-4 text-color-1 flex items-center gap-2">
+                    <span className="w-4 h-4 bg-green-500 rounded-full"></span>
+                    Our Solution
+                  </h3>
+                  <p className="text-color-2">{study.solution}</p>
+                </div>
+              </motion.div>
+
+              {/* Strategy */}
+              <motion.div 
+                className="mb-16"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                viewport={{ once: true }}
+              >
+                <h3 className="text-2xl font-bold mb-8 text-color-1 text-center">Key Strategies Implemented</h3>
+                <div className="grid md:grid-cols-2 gap-6">
+                  {study.strategy.map((item, i) => (
+                    <div key={i} className="bg-primary-color/50 border border-color p-6 rounded-xl hover:border-cyan-400/50 transition-colors">
+                      <h4 className="text-lg font-semibold mb-3 text-color-1">{item.title}</h4>
+                      <p className="text-color-2">{item.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+
+              {/* Testimonial */}
+              <motion.div 
+                className="bg-gradient-to-r from-cyan-900/20 to-blue-900/20 border-l-4 border-cyan-400 p-8 rounded-r-lg"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                viewport={{ once: true }}
+              >
+                <blockquote className="text-xl italic text-color-1 mb-6">"{study.testimonial.quote}"</blockquote>
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-cyan-400 rounded-full flex items-center justify-center text-white font-bold">
+                    {study.testimonial.author.split(' ').map(name => name[0]).join('')}
+                  </div>
+                  <div>
+                    <div className="font-bold text-color-1">{study.testimonial.author}</div>
+                    <div className="text-color-2">{study.testimonial.position}</div>
+                  </div>
+                </div>
+              </motion.div>
             </div>
-          </div>
-        </section>
-
-        {/* Industries We Serve */}
-        <section className="py-20 bg-secondary-color">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="text-center mb-16"
-            >
-              <h2 className="text-4xl font-bold mb-6 font-space-grotesk text-color-1">
-                Industries We <span className="gradient-text">Serve</span>
-              </h2>
-              <p className="text-xl text-color-2 max-w-3xl mx-auto">
-                Our proven strategies work across diverse industries and business models
-              </p>
-            </motion.div>
-
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-              {[
-                { name: "E-commerce", icon: "🛒" },
-                { name: "SaaS", icon: "💻" },
-                { name: "Healthcare", icon: "🏥" },
-                { name: "Manufacturing", icon: "🏭" },
-                { name: "Local Services", icon: "🔧" },
-                { name: "Clean Tech", icon: "🌱" },
-              ].map((industry, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="bg-accent-color border border-color p-6 text-center card-hover"
-                >
-                  <div className="text-3xl mb-3">{industry.icon}</div>
-                  <div className="text-color-1 font-semibold">{industry.name}</div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="py-20 bg-accent-color">
-          <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 font-space-grotesk text-color-1">
-                Ready to Write Your Success Story?
-              </h2>
-              <p className="text-xl text-color-2 mb-8">
-                Join the growing list of businesses that have transformed their growth with our proven strategies
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="btn-primary">Start Your Transformation</button>
-                <Link href="/services" className="btn-secondary">
-                  Explore Our Services
-                </Link>
-              </div>
-            </motion.div>
-          </div>
-        </section>
-      </main>
-
-    </>
+          ))}
+        </div>
+      </section>
+    </div>
   )
 }
 

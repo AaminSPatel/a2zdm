@@ -319,39 +319,7 @@ const Services = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-primary-color">
-        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-space-grotesk text-white">
-              Ready to Accelerate Your Growth?
-            </h2>
-            <p className="text-xl text-cyan-100 mb-8">
-              Let's discuss how we can help you achieve your business objectives through our data-driven approach.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link 
-                href="/contact" 
-                className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-cyan-400 to-blue-500 text-white font-semibold rounded-lg hover:opacity-90 transition-opacity"
-              >
-                Get Started Today
-                <FiArrowRight className="ml-2 w-5 h-5" />
-              </Link>
-              <Link 
-                href="/case-studies" 
-                className="inline-flex items-center justify-center px-6 py-3 bg-transparent border border-cyan-400 text-cyan-400 font-semibold rounded-lg hover:bg-cyan-400/10 transition-colors"
-              >
-                View Case Studies
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+     
     </main>
   );
 };

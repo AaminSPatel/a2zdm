@@ -80,7 +80,7 @@ const Blogs = () => {
               >
                 <span className="w-2 h-2 bg-accent-cyan rounded-full mr-2 animate-pulse"></span>
                 <span className="text-sm accent-cyan font-semibold">
-                  Know More About Us!
+                  Learn, Implement, Succeed Faster
                 </span>
               </motion.div>
 

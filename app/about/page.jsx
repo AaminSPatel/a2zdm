@@ -5,8 +5,8 @@ import { motion } from "framer-motion";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import {
-  FiArrowLeft,
-  FiArrowRight,
+  FiArrowLeft,FiLinkedin ,FiTwitter ,
+  FiArrowRight,FiGithub ,
   FiTarget,
   FiUsers,
   FiTrendingUp,
@@ -17,44 +17,100 @@ import Link from "next/link";
 const About = () => {
   const [currentTeamMember, setCurrentTeamMember] = useState(0);
 
-  const teamMembers = [
-    {
-      name: "Ateeq Patel",
-      position: "Founder & CEO",
-      expertise: "Web Analytics and Digital Marketing",
-      experience: "8+ years",
-      description:
-        "SEO, PPC, ASO and GA, GTM, GA4 at A2ZDM.com",
-      initial: "AP",
+const teamMembers = [
+  {
+    name: "Ateeq Patel",
+    position: "Founder & CEO",
+    expertise: "Web Analytics and Digital Marketing",
+    experience: "8+ years",
+    description: "SEO, PPC, ASO and GA, GTM, GA4 at A2ZDM.com",
+    initial: "AP",
+    // New fields
+    fullBio: "Digital marketing veteran with extensive experience in helping businesses grow through data-driven strategies. Founded the company with a vision to bridge the gap between analytics and actionable insights.",
+    education: "MBA in Digital Marketing, University of London",
+    certifications: [
+      "Google Analytics Certified",
+      "Google Ads Certified",
+      "HubSpot Content Marketing Certified"
+    ],
+    socialLinks: {
+      linkedin: "https://linkedin.com/in/ateeqpatel",
+      twitter: "https://twitter.com/ateeqpatel"
     },
-    {
-      name: "Zeeshan Ahmed",
-      position: "Head of Analytics",
-      expertise: "GA4, BigQuery & Data Science",
-      experience: "6+ years",
-      description:
-        "Data scientist specializing in advanced analytics and business intelligence solutions.",
-      initial: "ZA",
+    funFact: "Ran a successful food blog before transitioning to digital marketing",
+    skills: ["SEO", "PPC", "Google Analytics", "Data Visualization", "Strategy"],
+    avatarColor: "from-cyan-400 to-blue-500"
+  },
+  {
+    name: "Zeeshan Ahmed",
+    position: "Head of Analytics",
+    expertise: "GA4, BigQuery & Data Science",
+    experience: "6+ years",
+    description: "Data scientist specializing in advanced analytics and business intelligence solutions.",
+    initial: "ZA",
+    // New fields
+    fullBio: "Passionate about transforming raw data into meaningful insights. Has worked with Fortune 500 companies to implement scalable analytics solutions and build custom dashboards.",
+    education: "MS in Data Science, Stanford University",
+    certifications: [
+      "Google Data Analytics Professional",
+      "AWS Certified Data Analytics",
+      "Tableau Desktop Certified"
+    ],
+    socialLinks: {
+      linkedin: "https://linkedin.com/in/zeeshanahmed",
+      github: "https://github.com/zeeshanahmed"
     },
-    /* {
-      name: "Rohit Kumar",
-      position: "Performance Marketing Lead",
-      expertise: "PPC & Conversion Optimization",
-      experience: "5+ years",
-      description:
-        "Performance marketing expert focused on ROI-driven campaigns and optimization.",
-      initial: "RK",
+    funFact: "Competitive chess player in college",
+    skills: ["GA4", "BigQuery", "Python", "SQL", "Machine Learning"],
+    avatarColor: "from-purple-400 to-indigo-500"
+  },
+ /*  {
+    name: "Rohit Kumar",
+    position: "Performance Marketing Lead",
+    expertise: "PPC & Conversion Optimization",
+    experience: "5+ years",
+    description: "Performance marketing expert focused on ROI-driven campaigns and optimization.",
+    initial: "RK",
+    // New fields
+    fullBio: "Specializes in creating high-converting paid media campaigns across search and social platforms. Known for optimizing ad spend to deliver maximum results.",
+    education: "BS in Marketing, University of Delhi",
+    certifications: [
+      "Google Ads Search Certified",
+      "Facebook Blueprint Certified",
+      "Microsoft Advertising Certified"
+    ],
+    socialLinks: {
+      linkedin: "https://linkedin.com/in/rohitkumar",
+      twitter: "https://twitter.com/rohitkumar"
     },
-    {
-      name: "Sneha Gupta",
-      position: "Technical SEO Specialist",
-      expertise: "Technical SEO & Site Optimization",
-      experience: "4+ years",
-      description:
-        "Technical SEO specialist with deep expertise in site architecture and performance.",
-      initial: "SG",
-    }, */
-  ];
+    funFact: "Started his career selling ads for a local newspaper",
+    skills: ["PPC", "Conversion Rate Optimization", "A/B Testing", "Retargeting", "Ad Copywriting"],
+    avatarColor: "from-orange-400 to-red-500"
+  },
+  {
+    name: "Sneha Gupta",
+    position: "Technical SEO Specialist",
+    expertise: "Technical SEO & Site Optimization",
+    experience: "4+ years",
+    description: "Technical SEO specialist with deep expertise in site architecture and performance.",
+    initial: "SG",
+    // New fields
+    fullBio: "Helps websites achieve their full organic potential through technical optimizations. Particularly skilled at large-scale site migrations and JavaScript SEO.",
+    education: "BS in Computer Science, IIT Bombay",
+    certifications: [
+      "Google Mobile Sites Certified",
+      "SEO Technical Expert (Moz)",
+      "JavaScript SEO Specialist"
+    ],
+    socialLinks: {
+      linkedin: "https://linkedin.com/in/snehagupta",
+      twitter: "https://twitter.com/snehagupta"
+    },
+    funFact: "Built her first website at age 12",
+    skills: ["Technical SEO", "JavaScript", "Core Web Vitals", "Crawling/Indexing", "Structured Data"],
+    avatarColor: "from-green-400 to-teal-500"
+  } */
+];
 
   const values = [
     {
@@ -250,7 +306,7 @@ const About = () => {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -50 }}
                 transition={{ duration: 0.5 }}
-                className="bg-accent-color border border-color p-6 sm:p-8"
+                className="bg-gradient-to-br from-cyan-800 to-cyan-900 border border-color p-6 sm:p-8"
               >
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 items-center">
                   {/* Avatar */}
@@ -266,21 +322,75 @@ const About = () => {
                   </div>
 
                   {/* Info */}
-                  <div className="md:col-span-2">
-                    <h3 className="text-xl sm:text-2xl font-bold mb-2 text-color-1">
-                      {teamMembers[currentTeamMember].name}
-                    </h3>
-                    <div className="accent-cyan font-semibold mb-2 text-sm sm:text-base">
-                      {teamMembers[currentTeamMember].position}
-                    </div>
-                    <div className="text-color-2 mb-3 sm:mb-4 text-sm sm:text-base">
-                      <strong>Expertise:</strong>{" "}
-                      {teamMembers[currentTeamMember].expertise}
-                    </div>
-                    <p className="text-color-2 leading-relaxed text-sm sm:text-base">
-                      {teamMembers[currentTeamMember].description}
-                    </p>
-                  </div>
+                 {/* Info */}
+<div className="md:col-span-2">
+  <h3 className="text-xl sm:text-2xl font-bold mb-2 text-color-1">
+    {teamMembers[currentTeamMember].name}
+  </h3>
+  <div className="accent-cyan font-semibold mb-2 text-sm sm:text-base">
+    {teamMembers[currentTeamMember].position}
+  </div>
+  
+  <div className="text-color-2 mb-3 sm:mb-4 text-sm sm:text-base">
+    <strong>Expertise:</strong> {teamMembers[currentTeamMember].expertise}
+  </div>
+  
+  {/* Expanded bio section */}
+  <div className="mb-3">
+    <p className="text-color-2 leading-relaxed text-sm sm:text-base mb-3">
+      {teamMembers[currentTeamMember].fullBio}
+    </p>
+  </div>
+  
+  {/* Education */}
+  {teamMembers[currentTeamMember].education && (
+    <div className="mb-2">
+      <span className="font-semibold">Education: </span>
+      <span>{teamMembers[currentTeamMember].education}</span>
+    </div>
+  )}
+  
+  {/* Certifications */}
+  {teamMembers[currentTeamMember].certifications?.length > 0 && (
+    <div className="mb-3">
+      <span className="font-semibold">Certifications: </span>
+      <div className="flex flex-wrap gap-2 mt-1">
+        {teamMembers[currentTeamMember].certifications.map((cert, index) => (
+          <span key={index} className="bg-accent-color px-2 py-1 text-xs rounded">
+            {cert}
+          </span>
+        ))}
+      </div>
+    </div>
+  )}
+  
+  {/* Fun Fact */}
+  {teamMembers[currentTeamMember].funFact && (
+    <div className="mt-3 pt-3 border-t border-gray-700">
+      <span className="font-semibold">Fun Fact: </span>
+      <span className="italic">{teamMembers[currentTeamMember].funFact}</span>
+    </div>
+  )}
+  
+  {/* Social Links */}
+  <div className="flex space-x-3 mt-4">
+    {teamMembers[currentTeamMember].socialLinks?.linkedin && (
+      <a href={teamMembers[currentTeamMember].socialLinks.linkedin} target="_blank" rel="noopener noreferrer">
+        <FiLinkedin className="w-5 h-5 hover:text-blue-400 transition-colors" />
+      </a>
+    )}
+    {teamMembers[currentTeamMember].socialLinks?.twitter && (
+      <a href={teamMembers[currentTeamMember].socialLinks.twitter} target="_blank" rel="noopener noreferrer">
+        <FiTwitter className="w-5 h-5 hover:text-blue-400 transition-colors" />
+      </a>
+    )}
+    {teamMembers[currentTeamMember].socialLinks?.github && (
+      <a href={teamMembers[currentTeamMember].socialLinks.github} target="_blank" rel="noopener noreferrer">
+        <FiGithub className="w-5 h-5 hover:text-gray-400 transition-colors" />
+      </a>
+    )}
+  </div>
+</div>
                 </div>
               </motion.div>
 
@@ -363,7 +473,7 @@ const About = () => {
         </section>
 
         {/* CTA Section */}
-        <section className="py-16 sm:py-20 bg-secondary-color">
+        {/* <section className="py-16 sm:py-20 bg-secondary-color">
           <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -384,7 +494,7 @@ const About = () => {
               </div>
             </motion.div>
           </div>
-        </section>
+        </section> */}
       </main>
     </>
   );

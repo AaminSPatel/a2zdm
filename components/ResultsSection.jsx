@@ -95,7 +95,7 @@ const ResultsSection = () => {
             <div className="text-color-2 text-sm sm:text-base">Support Available</div>
           </div>
           <div>
-            <div className="text-2xl sm:text-3xl font-bold text-green-400 mb-2">5+</div>
+            <div className="text-2xl sm:text-3xl font-bold text-green-400 mb-2">15+</div>
             <div className="text-color-2 text-sm sm:text-base">Years Experience</div>
           </div>
         </motion.div>

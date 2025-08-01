@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
@@ -26,6 +26,7 @@ const Navbar = () => {
   const [showServices, setShowServices] = useState(false);
   const [expandedCategory, setExpandedCategory] = useState(null);
   const pathname = usePathname();
+const menuRef = useRef(null);
 
   const { serviceData } = useTech();
 
@@ -50,12 +51,25 @@ const Navbar = () => {
         return <FiTrendingUp className="w-4 h-4" />;
     }
   };
+useEffect(() => {
+  const handleClickOutside = (event) => {
+    if (menuRef.current && !menuRef.current.contains(event.target)) {
+      setShowServices(false);   // Close desktop dropdown
+      setIsOpen(false);         // Close mobile menu
+    }
+  };
+
+  document.addEventListener("mousedown", handleClickOutside);
+  return () => {
+    document.removeEventListener("mousedown", handleClickOutside);
+  };
+}, []);
 
   const toggleCategory = (index) => {
     setExpandedCategory(expandedCategory === index ? null : index)
   }
   return (
-    <nav className="bg-secondary-color border-b border-color sticky top-0 z-50">
+    <nav className="bg-secondary-color border-b border-color sticky top-0 z-50"  ref={menuRef}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -153,10 +167,10 @@ const Navbar = () => {
                                 initial={{ opacity: 0, x: -10 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 exit={{ opacity: 0, x: -10 }}
-                                className="absolute left-full top-0 ml-0 w-64 bg-primary-color shadow-xl rounded-r-md"
+                                className="absolute left-full top-0 ml-0 w-64 shadow-xl rounded-r-md"
                                 style={{ height: "calc(100% + 2px)" }}
                               >
-                                <div className="bg-primary-color">
+                                <div className="bg-extra">
                                   <div className="">
                                     {Object.entries(
                                       category.services || {}
@@ -197,6 +211,14 @@ const Navbar = () => {
               }`}
             >
               Blogs
+            </Link>
+             <Link
+              href="/case-studies"
+              className={`text-color-1 hover:accent-cyan transition-colors ${
+                pathname === "/case-studies" ? "accent-cyan" : ""
+              }`}
+            >
+              Case Studies
             </Link>
             <Link href="/contact" className="btn-primary mr-3">
               Get Quote
@@ -310,6 +332,13 @@ const Navbar = () => {
                 onClick={() => setIsOpen(false)}
               >
                 Blogs
+              </Link>
+              <Link
+                href="/case-studies"
+                className="block text-color-1 hover:accent-cyan"
+                onClick={() => setIsOpen(false)}
+              >
+                Case Study
               </Link>
               <Link 
                 href="/contact" 

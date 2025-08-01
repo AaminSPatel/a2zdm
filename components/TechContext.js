@@ -164,7 +164,7 @@ export const TechProvider = ({ children }) => {
     title: "PR & Industry SEO",
     category: "SEO Services",
     icon: "<FiMic className='w-8 h-8' />",
-    heroImage: "/pr&out.jpg",
+    heroImage: "/pr.jpg",
     description: "Increase brand credibility and recognition through targeted press and directory visibility.",
     longDescription: "Our PR & Industry SEO services combine traditional public relations with digital marketing to position your brand as an authority in your industry through media placements, expert positioning, and strategic content distribution.",
     features: [
@@ -230,7 +230,7 @@ export const TechProvider = ({ children }) => {
       title: "Digital Analytics",
       category: "Data Services",
       icon: "<FiBarChart2 className='w-8 h-8' />",
-      heroImage: "/digital-analytics.jpg",
+      heroImage: "/digi.jpg",
       description: "Transform raw data into actionable insights to drive business growth and optimization.",
       longDescription: "Our Digital Analytics services help you implement, configure, and leverage analytics platforms to track user behavior, measure campaign performance, and uncover opportunities for conversion rate optimization across all digital channels.",
       features: [
@@ -295,24 +295,7 @@ export const TechProvider = ({ children }) => {
         ]
       }
     }
-  }
-},
- // digital marketing industry
- {
-  title: "Digital Marketing",
-  slug: "digital-marketing",
-  icon: "FiGlobe",
-  description:
-    "Boost your brand's online presence through multi-channel digital strategies tailored for growth and engagement.",
-  gradient: "from-purple-500 to-pink-500",
-  benefits: [
-    "Reach your target audience across platforms",
-    "Enhance brand visibility and recognition",
-    "Increase website traffic and conversions",
-    "Track and optimize campaign performance"
-  ],
- services: {
-      "ecommerce-seo": {
+    , "ecommerce-seo": {
     title: "Ecommerce SEO",
     category: "SEO Services",
     icon: "<FiShoppingBag className='w-8 h-8' />",
@@ -972,9 +955,27 @@ export const TechProvider = ({ children }) => {
     }
   },
 
+  }
+},
+ // digital marketing industry
+/*  {
+  title: "Digital Marketing",
+  slug: "digital-marketing",
+  icon: "FiGlobe",
+  description:
+    "Boost your brand's online presence through multi-channel digital strategies tailored for growth and engagement.",
+  gradient: "from-purple-500 to-pink-500",
+  benefits: [
+    "Reach your target audience across platforms",
+    "Enhance brand visibility and recognition",
+    "Increase website traffic and conversions",
+    "Track and optimize campaign performance"
+  ],
+ services: {
+     
 
 }
-  },
+  }, */
  //digital Analytics
   {
     title: "Digital Analytics",
@@ -2050,201 +2051,7 @@ export const TechProvider = ({ children }) => {
     }
   },
 
-//Case Study 1
-  {
-    title: "Case Study",
-    icon: "FiBookOpen",
-    description: "Proven strategies and success stories",
-    gradient: "from-pink-500 to-red-500",
-    benefits: [
-      "Gain trust with real-world examples",
-      "Understand industry benchmarks",
-      "Learn what worked (and why)",
-      "Apply insights to your own strategy",
-    ],
-    services:{
-       "giggle-tree": {
-    title: "Giggle Tree Framework",
-    category: "Measurement Framework",
-    icon: "<FiGitBranch className='w-8 h-8' />",
-    heroImage: "/images/services/analytics/giggle-tree.jpg",
-    description: "Proprietary hierarchical measurement framework for decomposing and optimizing marketing performance.",
-    longDescription: "Implementation of our proprietary Giggle Tree framework that structures marketing performance into hierarchical components (channels → tactics → creatives) with dynamic weighting to identify optimization opportunities at each level of your marketing stack.",
-    features: [
-      "Hierarchical performance mapping",
-      "Dynamic weighting algorithms",
-      "Creative-level measurement",
-      "Tactical benchmarking",
-      "Channel contribution analysis",
-      "Automated opportunity sizing",
-      "Integration with existing tools",
-      "Custom visualization"
-    ],
-    benefits: [
-      "Granular performance insights",
-      "Actionable optimization guidance",
-      "Creative intelligence",
-      "Tactical benchmarking",
-      "Dynamic weight adjustments",
-      "Visual performance mapping"
-    ],
-    process: [
-      {
-        step: "1",
-        title: "Taxonomy Design",
-        description: "Structuring your marketing hierarchy"
-      },
-      {
-        step: "2",
-        title: "Data Mapping",
-        description: "Connecting performance data to each level"
-      },
-      {
-        step: "3",
-        title: "Weighting Calibration",
-        description: "Setting dynamic importance factors"
-      },
-      {
-        step: "4",
-        title: "Visualization",
-        description: "Building interactive Giggle Tree dashboards"
-      }
-    ],
-    pricing: {
-      starter: { 
-        price: "₹80,000", 
-        features: [
-          "Basic Framework Setup", 
-          "3 Channel Levels", 
-          "Standard Weighting",
-          "Static Visualization"
-        ] 
-      },
-      professional: {
-        price: "₹180,000",
-        features: [
-          "Advanced Implementation",
-          "5+ Channel Levels",
-          "Dynamic Weighting",
-          "Automated Insights",
-          "Quarterly Updates"
-        ]
-      },
-      enterprise: {
-        price: "₹350,000",
-        features: [
-          "Enterprise Deployment",
-          "Custom Algorithm Development",
-          "Real-time Data Integration",
-          "Team Training",
-          "Ongoing Optimization"
-        ]
-      }
-    },
-    caseStudy: {
-      client: "DTC Subscription Brand",
-      challenge: "Unable to identify underperforming ad creatives in $3M/month spend",
-      solution: "Giggle Tree implementation with creative-level measurement",
-      results: [
-        { metric: "Creative ROAS", improvement: "+65%" },
-        { metric: "Waste Identified", improvement: "$450K/month" },
-        { metric: "Testing Efficiency", improvement: "3x better results" }
-      ]
-    }
-  },
 
-  "tue": {
-    title: "TUE Framework",
-    category: "Media Efficiency",
-    icon: "<FiActivity className='w-8 h-8' />",
-    heroImage: "/images/services/analytics/tue.jpg",
-    description: "Transactional Utility Efficiency - our proprietary metric for evaluating media performance beyond last-click.",
-    longDescription: "Implementation of our TUE (Transactional Utility Efficiency) framework that evaluates each marketing touchpoint's contribution to driving valuable user actions (not just conversions) based on its position in the journey and the quality of engagement it generates.",
-    features: [
-      "Action quality scoring",
-      "Journey position weighting",
-      "Engagement quality analysis",
-      "TUE score calculation",
-      "Creative-level TUE insights",
-      "Channel efficiency ranking",
-      "Bid adjustment recommendations",
-      "Custom KPI integration"
-    ],
-    benefits: [
-      "Beyond last-click measurement",
-      "Engagement quality insights",
-      "Early-funnel value recognition",
-      "Creative effectiveness scoring",
-      "Bid optimization guidance",
-      "Holistic performance view"
-    ],
-    process: [
-      {
-        step: "1",
-        title: "Action Mapping",
-        description: "Defining valuable user actions beyond conversions"
-      },
-      {
-        step: "2",
-        title: "Weighting Framework",
-        description: "Establishing journey position importance"
-      },
-      {
-        step: "3",
-        title: "Scoring Implementation",
-        description: "Calculating TUE for all touchpoints"
-      },
-      {
-        step: "4",
-        title: "Optimization",
-        description: "Applying insights to media strategy"
-      }
-    ],
-    pricing: {
-      starter: { 
-        price: "₹70,000", 
-        features: [
-          "Basic TUE Setup", 
-          "3 Action Types", 
-          "Standard Weighting",
-          "Monthly Reports"
-        ] 
-      },
-      professional: {
-        price: "₹160,000",
-        features: [
-          "Advanced Implementation",
-          "Unlimited Action Types",
-          "Custom Weighting",
-          "Bid Recommendations",
-          "Quarterly Updates"
-        ]
-      },
-      enterprise: {
-        price: "₹300,000",
-        features: [
-          "Enterprise Deployment",
-          "Platform Integrations",
-          "Real-time Scoring",
-          "Team Training",
-          "Ongoing Refinement"
-        ]
-      }
-    },
-    caseStudy: {
-      client: "Travel Booking Platform",
-      challenge: "Over-reliance on bottom-funnel tactics starving top-funnel",
-      solution: "TUE framework implementation recognizing early-journey value",
-      results: [
-        { metric: "Top-Funnel Investment", improvement: "+40%" },
-        { metric: "Customer Acquisition Cost", improvement: "-25%" },
-        { metric: "LTV:CAC Ratio", improvement: "Improved 1.8x" }
-      ]
-    }
-  },
-
-    }
-  },
 ]; 
 
 

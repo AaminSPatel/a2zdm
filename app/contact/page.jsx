@@ -33,11 +33,76 @@ Please respond at your earliest convenience.`;
     window.open(`https://wa.me/91${mobile_number}?text=${encodedMessage}`, '_blank');
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    sendWhatsAppMessage();
-  };
+ const handleSubmit = (e) => {
+  e.preventDefault();
+  
+  const { name, email, subject, message } = formData;
+  
+  // Create mailto link with form data
+  const mailtoLink = `mailto:info@a2zdm.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
+    `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+  )}`;
+  
+  // Open default email client
+  window.location.href = mailtoLink;
+  
+  // Optional: Still keep the WhatsApp option as fallback
+  sendWhatsAppMessage();
+};
 
+const contactDetails = {
+  title: "Our Contact Details",
+  items: [
+    {
+      id: 1,
+      icon: <FiMail className="w-5 h-5" />,
+      gradient: "from-cyan-400 to-blue-500",
+      title: "Email Us",
+      details: [
+        {
+          text: "info@a2zdm.com",
+          link: "mailto:info@a2zdm.com.com"
+        },
+       /*  {
+          text: "support@yourcompany.com",
+          link: "mailto:support@yourcompany.com"
+        } */
+      ]
+    },
+    {
+      id: 2,
+      icon: <FiPhone className="w-5 h-5" />,
+      gradient: "from-blue-500 to-purple-500",
+      title: "Call Us",
+      details: [
+        {
+          text: "+91 9826739671",
+          link: "tel:+919826739671"
+        },
+        {
+          text: "Mon-Fri: 9am-6pm",
+          link: null
+        }
+      ]
+    },
+    {
+      id: 3,
+      icon: <FiMapPin className="w-5 h-5" />,
+      gradient: "from-purple-500 to-pink-500",
+      title: "Visit Us",
+      details: [
+        {
+          text: "22 B Sher Shah Suri Nagar-B Khajrana",
+          link: "https://maps.google.com?q=22+B+Sher+Shah+Suri+Nagar-B+Khajrana,Indore"
+        },
+        {
+          text: "Indore, Madhya Pradesh, India",
+          link: null
+        }
+      ]
+    }
+  ]
+}
   return (
     <div className="bg-primary-color">
       {/* Hero Section with Background Image */}
@@ -98,52 +163,42 @@ Please respond at your earliest convenience.`;
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
             {/* Contact Information */}
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="space-y-8"
-            >
-              <h2 className="text-3xl sm:text-4xl font-bold mb-6 font-space-grotesk text-color-1">
-                Our <span className="gradient-text">Contact</span> Details
-              </h2>
-              
-              <div className="space-y-6">
-                <div className="flex items-start space-x-4">
-                  <div className="bg-gradient-to-r from-cyan-400 to-blue-500 p-3 rounded-full text-white">
-                    <FiMail className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-color-1 mb-1">Email Us</h3>
-                    <p className="text-color-2">contact@yourcompany.com</p>
-                    <p className="text-color-2">support@yourcompany.com</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-4">
-                  <div className="bg-gradient-to-r from-blue-500 to-purple-500 p-3 rounded-full text-white">
-                    <FiPhone className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-color-1 mb-1">Call Us</h3>
-                    <p className="text-color-2">+1 (555) 123-4567</p>
-                    <p className="text-color-2">Mon-Fri: 9am-6pm</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-4">
-                  <div className="bg-gradient-to-r from-purple-500 to-pink-500 p-3 rounded-full text-white">
-                    <FiMapPin className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-color-1 mb-1">Visit Us</h3>
-                    <p className="text-color-2">123 Business Avenue</p>
-                    <p className="text-color-2">San Francisco, CA 94107</p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
+  initial={{ opacity: 0, x: -50 }}
+  whileInView={{ opacity: 1, x: 0 }}
+  transition={{ duration: 0.8 }}
+  viewport={{ once: true }}
+  className="space-y-8"
+>
+  <h2 className="text-3xl sm:text-4xl font-bold mb-6 font-space-grotesk text-color-1">
+    {contactDetails.title.split(' ')[0]} <span className="gradient-text">{contactDetails.title.split(' ')[1]}</span> {contactDetails.title.split(' ').slice(2).join(' ')}
+  </h2>
+  
+  <div className="space-y-6">
+    {contactDetails.items.map((item) => (
+      <div key={item.id} className="flex items-start space-x-4">
+        <div className={`bg-gradient-to-r ${item.gradient} p-3 rounded-full text-white`}>
+          {item.icon}
+        </div>
+        <div>
+          <h3 className="text-lg font-semibold text-color-1 mb-1">{item.title}</h3>
+          {item.details.map((detail, index) => (
+            detail.link ? (
+              <a 
+                key={index} 
+                href={detail.link} 
+                className="text-color-2 hover:text-cyan-400 transition-colors block"
+              >
+                {detail.text}
+              </a>
+            ) : (
+              <p key={index} className="text-color-2">{detail.text}</p>
+            )
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</motion.div>
             {/* Contact Form */}
            <motion.div
               initial={{ opacity: 0, x: 50 }}
@@ -211,14 +266,13 @@ Please respond at your earliest convenience.`;
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <button
-                    type="submit"
-                    className="inline-flex items-center justify-center w-full px-6 py-3 bg-gradient-to-r from-cyan-400 to-blue-500 text-white font-semibold rounded-lg hover:opacity-90 transition-opacity"
-                  >
-                    Send via WhatsApp
-                    <FiSend className="ml-2 w-5 h-5" />
-                  </button>
-                  
+                 <button
+  type="submit"
+  className="inline-flex items-center justify-center w-full px-6 py-3 bg-gradient-to-r from-cyan-400 to-blue-500 text-white font-semibold rounded-lg hover:opacity-90 transition-opacity"
+>
+  Send Message
+  <FiSend className="ml-2 w-5 h-5" />
+</button>
                   <a
                     href={`https://wa.me/91${mobile_number}?text=${encodeURIComponent(
                       "Hi A2ZDM Team, I'd like to discuss a potential project. Can we schedule a call?"

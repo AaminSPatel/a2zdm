@@ -177,23 +177,8 @@ const HeroSection = () => {
               </Link>
             </motion.div>
 
-            {/* Trust Indicators */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
-              className="flex items-center space-x-6 text-sm text-color-2"
-            >
-              <div className="flex items-center space-x-2">
-                <div className="w-4 h-4 bg-green-400 rounded-full"></div>
-                <span>5+ Years Experience</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-4 h-4 bg-cyan-400 rounded-full"></div>
-                <span>98% Client Satisfaction</span>
-              </div>
-            </motion.div>
-          </motion.div>
+          
+          </motion.div> 
 
           {/* Enhanced Visual Dashboard */}
           <motion.div
