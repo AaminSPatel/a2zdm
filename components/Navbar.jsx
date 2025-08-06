@@ -86,7 +86,7 @@ useEffect(() => {
                 A2ZDM Pvt. Ltd.
               </span>
               <span className="text-sm font-space-grotesk text-color-2 comforta">
-                A Martech Company
+                A MarTech Company
               </span>
             </div>
           </Link>

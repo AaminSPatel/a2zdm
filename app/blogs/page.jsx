@@ -131,7 +131,7 @@ const Blogs = () => {
                     setSelectedCategory(e.target.value);
                     setCurrentPage(1);
                   }}
-                  className="bg-secondary-color border border-color text-color-1 px-3 sm:px-4 py-2 sm:py-3 focus:border-cyan-400 focus:outline-none flex-1 md:flex-none text-sm sm:text-base"
+                  className="bg-secondary-color border border-color text-color-1 px-3 capitalize sm:px-4 py-2 sm:py-3 focus:border-cyan-400 focus:outline-none flex-1 md:flex-none text-sm sm:text-base"
                 >
                   {availableCategories.map((category) => (
                     <option key={category} value={category}>
@@ -220,7 +220,7 @@ const BlogCard = ({ blog, index }) => (
         </div>
       </div>
 
-      <h2 className="text-lg sm:text-xl font-bold mb-3 text-color-1 group-hover:accent-cyan transition-colors line-clamp-2">
+      <h2 className="text-lg capitalize sm:text-xl font-bold mb-3 text-color-1 group-hover:accent-cyan transition-colors line-clamp-2">
         {blog.title}
       </h2>
 

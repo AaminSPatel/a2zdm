@@ -13,7 +13,7 @@ import { useTech } from "@/components/TechContext";
 const BlogDetail = () => {
   const params = useParams();
   const { slug } = params;
-  const { blogs, loading, error } = useTech();
+  const { blogs, loading, error ,logoUrl,siteUrl} = useTech();
   const [blog, setBlog] = useState(null);
   const [seoData, setSeoData] = useState({});
   const [relatedPosts, setRelatedPosts] = useState([]);
@@ -68,29 +68,53 @@ const BlogDetail = () => {
 
   return (
     <>
-     <Head>
-        <title>{seoData.title}</title>
-        <meta name="description" content={seoData.metaDesc} />
-        <link rel="canonical" href={seoData.canonical} />
-        
-        <meta property="og:type" content="article" />
-        <meta property="og:title" content={seoData.ogTitle} />
-        <meta property="og:description" content={seoData.ogDescription} />
-        <meta property="og:image" content={seoData.ogImage} />
-        <meta property="og:url" content={seoData.canonical} />
-        
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={seoData.twitterTitle} />
-        <meta name="twitter:description" content={seoData.twitterDescription} />
-        <meta name="twitter:image" content={seoData.twitterImage} />
-        
-        <meta property="article:published_time" content={blog.date} />
-        <meta property="article:author" content={blog.author} />
-        {blog.tags?.map(tag => (
-          <meta property="article:tag" content={tag} key={tag} />
-        ))}
-      </Head>
+    <Head>
+  <title>{seoData.title}</title>
+  <meta name="description" content={seoData.metaDesc} />
+  <link rel="canonical" href={seoData.canonical} />
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content={seoData.ogTitle} />
+  <meta property="og:description" content={seoData.ogDescription} />
+  <meta property="og:image" content={seoData.ogImage} />
+  <meta property="og:url" content={seoData.canonical} />
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={seoData.twitterTitle} />
+  <meta name="twitter:description" content={seoData.twitterDescription} />
+  <meta name="twitter:image" content={seoData.twitterImage} />
+  
+  <meta property="article:published_time" content={blog.date} />
+  <meta property="article:author" content={blog.author} />
+  {blog.tags?.map(tag => (
+    <meta property="article:tag" content={tag} key={tag} />
+  ))}
 
+  <script type="application/ld+json">
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": seoData.title,
+      "description": seoData.metaDesc,
+      "image": seoData.ogImage,
+      "author": {
+        "@type": "Person",
+        "name": "Ateeq Patel"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "A2ZDM Private Limited",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "/logo6.png" // Replace with your dynamic logo URL
+        }
+      },
+      "url": seoData.canonical,
+      "datePublished": blog.date,
+      "dateModified": blog.modifiedDate || blog.date // Use modified date if available, otherwise fallback to published date
+    })}
+  </script>
+</Head>
       <main className="min-h-screen bg-primary-color">
         {/* Back Navigation */}
         <section className="py-4 sm:py-6 bg-secondary-color border-b border-color">

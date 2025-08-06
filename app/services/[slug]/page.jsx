@@ -12,11 +12,11 @@ import {
   FiActivity,
 } from "react-icons/fi";
 import { useTech } from "@/components/TechContext";
-
+import Head from "next/head";
 const ServiceDetail = () => {
   const params = useParams();
   const { slug } = params;
-  const { serviceData ,mobile_number} = useTech();
+  const { serviceData ,mobile_number,logoUrl,siteUrl} = useTech();
 
   // Find the service by slug from the nested structure
   const findServiceBySlug = (slug) => {
@@ -54,10 +54,114 @@ const ServiceDetail = () => {
         return <FiActivity className="w-6 sm:w-8 h-6 sm:h-8" />;
     }
   };
-
+  const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
+ 
   return (
     <main className="min-h-screen bg-primary-color">
       {/* Back Navigation */}
+       <Head>
+        {/* Primary Meta Tags */}
+        <title>{service.title} | A2ZDM Private Limited</title>
+        <meta name="description" content={service.description} />
+        <meta name="keywords" content={`${service.title}, ${service.category}, A2ZDM services, ${service.tags?.join(', ') || ''}`} />
+        
+        {/* Canonical */}
+        <link rel="canonical" href={`${siteUrl}/services/${slug}`} />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={`${service.title} | A2ZDM Private Limited`} />
+        <meta property="og:description" content={service.description} />
+        <meta property="og:image" content={service.heroImage || logoUrl} />
+        <meta property="og:url" content={`${siteUrl}/services/${slug}`} />
+        <meta property="og:site_name" content="A2ZDM Private Limited" />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`${service.title} | A2ZDM Private Limited`} />
+        <meta name="twitter:description" content={service.description} />
+        <meta name="twitter:image" content={service.heroImage || logoUrl} />
+        
+        {/* Additional SEO Tags */}
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="index, follow" />
+        <meta name="author" content="Ateeq Patel" />
+        <meta name="publisher" content="A2ZDM Private Limited" />
+        
+        {/* Schema.org markup */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "serviceType": service.category,
+            "name": service.title,
+            "description": service.description,
+            "provider": {
+              "@type": "LocalBusiness",
+              "name": "A2ZDM Private Limited",
+              "image": logoUrl,
+              "url": siteUrl,
+              "telephone": "+91 9826739671",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "22 B Sher Shah Suri Nagar-B Khajrana",
+                "addressLocality": "Indore",
+                "addressRegion": "Madhya Pradesh",
+                "postalCode": "452016",
+                "addressCountry": "India"
+              },
+              "sameAs": [
+                "https://www.facebook.com/yourpage",
+                "https://www.linkedin.com/company/yourcompany",
+                "https://twitter.com/yourhandle"
+              ]
+            },
+            "areaServed": {
+              "@type": "Place",
+              "name": "India"
+            },
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Service Offerings",
+              "itemListElement": service.features?.map((feature, index) => ({
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": feature
+                }
+              }))
+            }
+          })}
+        </script>
+
+        {/* Breadcrumb Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": siteUrl
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Services",
+                "item": `${siteUrl}/services`
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": service.title,
+                "item": currentUrl
+              }
+            ]
+          })}
+        </script>
+      </Head>
       <section className="py-6 bg-secondary-color border-b border-color">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
