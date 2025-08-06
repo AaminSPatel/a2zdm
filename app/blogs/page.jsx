@@ -5,8 +5,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { FiSearch, FiFilter, FiCalendar, FiUser, FiArrowRight, FiChevronRight, FiChevronLeft } from "react-icons/fi";
 import { useTech } from "@/components/TechContext";
-import Navbar from "../../components/Navbar";
-import Footer from "../../components/Footer";
+import Head from "next/head";
 
 const Blogs = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -16,23 +15,36 @@ const Blogs = () => {
   
   const { blogs, loading, error } = useTech();
 
-  // Available categories from context
-  const availableCategories = ["All", ...new Set(blogs.flatMap(blog => blog.categories))];
+  // Define your specific categories
+  const mainCategories = [
+    "Search Engine Optimization",
+    "Analytics",
+    "Google Tag Manager",
+    "Performance Marketing"
+  ];
+
+  const availableCategories = ["All", ...mainCategories, "Other"];
 
   // Filter blogs based on search and category
   const filteredBlogs = blogs.filter((blog) => {
+    // Search term matching
     const matchesSearch =
       blog.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       blog.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      blog.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
-    
+      (blog.tags && blog.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase())));
+
+    // Category matching
     const matchesCategory = 
-      selectedCategory === "All" || 
-      blog.categories.includes(selectedCategory);
+      selectedCategory === "All" ? true :
+      selectedCategory === "Other" ? 
+        !blog.categories?.some(cat => mainCategories.includes(cat)) :
+        blog.categories?.includes(selectedCategory);
     
     return matchesSearch && matchesCategory;
   });
 
+  // Rest of your component remains the same...
+  // ... [keep all your existing JSX and other functions]
   // Pagination
   const totalPages = Math.ceil(filteredBlogs.length / blogsPerPage);
   const currentBlogs = filteredBlogs.slice(
@@ -45,14 +57,73 @@ const Blogs = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  if (loading) return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
-  if (error) return <div className="min-h-screen flex items-center justify-center">Error: {error}</div>;
+if (loading) return (
+  <div className="min-h-screen bg-primary-color py-16">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        {[...Array(6)].map((_, i) => (
+          <div key={i} className="bg-secondary-color border border-color rounded-lg overflow-hidden">
+            <div className="animate-pulse">
+              <div className="bg-gray-700 h-48 w-full"></div>
+              <div className="p-6">
+                <div className="h-4 bg-gray-700 rounded w-3/4 mb-4"></div>
+                <div className="h-3 bg-gray-700 rounded w-full mb-2"></div>
+                <div className="h-3 bg-gray-700 rounded w-5/6 mb-2"></div>
+                <div className="h-3 bg-gray-700 rounded w-4/6 mb-6"></div>
+                <div className="h-3 bg-gray-700 rounded w-1/4"></div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+);  if (error) return <div className="min-h-screen flex items-center justify-center">Error: {error}</div>;
 
   return (
     <>
       <main className="min-h-screen bg-primary-color">
+       <Head>
+    <title>Digital Marketing Insights & Blog | A2ZDM</title>
+    <meta name="description" content="Expert insights on SEO, analytics, performance marketing and digital trends. Learn actionable strategies to grow your business online." />
+    <meta name="keywords" content="digital marketing blog, SEO tips, analytics guide, Google Tag Manager, performance marketing strategies" />
+    <link rel="canonical" href="https://www.a2zdm.com/blogs" />
+    
+    {/* Open Graph / Facebook */}
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Digital Marketing Insights | A2ZDM Blog" />
+    <meta property="og:description" content="Actionable digital marketing strategies and industry insights from A2ZDM experts" />
+    <meta property="og:image" content="https://www.a2zdm.com/images/blog-og-image.jpg" />
+    <meta property="og:url" content="https://www.a2zdm.com/blogs" />
+    <meta property="og:site_name" content="A2ZDM" />
+    
+    {/* Twitter */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Digital Marketing Insights | A2ZDM Blog" />
+    <meta name="twitter:description" content="Expert tips on SEO, analytics, and performance marketing strategies" />
+    <meta name="twitter:image" content="https://www.a2zdm.com/images/blog-twitter-card.jpg" />
+    
+    {/* Schema.org markup */}
+    <script type="application/ld+json">
+      {JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "headline": "Digital Marketing Insights",
+        "description": "Expert articles on digital marketing strategies",
+        "url": "https://www.a2zdm.com/blogs",
+        "publisher": {
+          "@type": "Organization",
+          "name": "A2ZDM",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.a2zdm.com/logo.png"
+          }
+        }
+      })}
+    </script>
+  </Head>
         {/* Hero Section */}
-       <section className="relative min-h-[60vh] flex items-center bg-primary-color overflow-hidden">
+        <section className="relative min-h-[60vh] flex items-center bg-primary-color overflow-hidden">
           {/* Background Image with Overlay */}
           <div className="absolute inset-0">
             <div
@@ -90,7 +161,7 @@ const Blogs = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
-                Digital Marketing  <span className="gradient-text">Insights</span>
+                Digital Marketing <span className="gradient-text">Insights</span>
               </motion.h1>
 
               <motion.p
@@ -131,7 +202,7 @@ const Blogs = () => {
                     setSelectedCategory(e.target.value);
                     setCurrentPage(1);
                   }}
-                  className="bg-secondary-color border border-color text-color-1 px-3 capitalize sm:px-4 py-2 sm:py-3 focus:border-cyan-400 focus:outline-none flex-1 md:flex-none text-sm sm:text-base"
+                  className="bg-secondary-color border border-color text-color-1 px-3 sm:px-4 py-2 sm:py-3 focus:border-cyan-400 focus:outline-none w-full md:w-64 text-sm sm:text-base"
                 >
                   {availableCategories.map((category) => (
                     <option key={category} value={category}>
@@ -185,7 +256,7 @@ const Blogs = () => {
   );
 };
 
-// Extracted components for better readability
+// BlogCard component
 const BlogCard = ({ blog, index }) => (
   <motion.article
     initial={{ opacity: 0, y: 30 }}
@@ -242,6 +313,7 @@ const BlogCard = ({ blog, index }) => (
   </motion.article>
 );
 
+// NoResults component
 const NoResults = ({ onClearFilters }) => (
   <div className="text-center py-16">
     <div className="text-4xl sm:text-6xl mb-4">🔍</div>
@@ -258,6 +330,7 @@ const NoResults = ({ onClearFilters }) => (
   </div>
 );
 
+// Pagination component
 const Pagination = ({ currentPage, totalPages, onPageChange }) => (
   <motion.div
     initial={{ opacity: 0, y: 30 }}
@@ -302,12 +375,13 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => (
   </motion.div>
 );
 
-
+// NewsletterCTA component
 const NewsletterCTA = () => {
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState({ text: '', isError: false });
-const {mobile_number} = useTech()
+  const { mobile_number } = useTech();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     
@@ -325,19 +399,9 @@ const {mobile_number} = useTech()
     setMessage({ text: '', isError: false });
 
     try {
-      // Replace with your WhatsApp number (include country code, remove +)
-      
-      // Your message template
       const message = `New subscription: ${email}`;
-      
-      // Using WhatsApp API to send the message
       const whatsappUrl = `https://wa.me/${mobile_number}?text=${encodeURIComponent(message)}`;
-      
-      // Open WhatsApp in a new tab (alternative to actually sending the message)
       window.open(whatsappUrl, '_blank');
-      
-      // Alternatively, if you want to actually send without user interaction,
-      // you would need a backend service to handle this
       
       setEmail('');
       setMessage({ text: 'Thank you for subscribing!', isError: false });

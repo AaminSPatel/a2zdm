@@ -172,24 +172,16 @@ const Footer = () => {
         {/* Social Media & Copyright */}
         <div className="border-t border-color mt-8 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <div className="flex space-x-4">
-            <a href="#" className="text-color-2 hover:text-[#1DA1F2] transition-colors">
+            <a href="https://www.facebook.com/people/A2ZDM/100063743120491/?locale=te_IN" className="text-color-2 hover:text-[#1DA1F2] transition-colors">
               <FaTwitter className="w-5 h-5" />
             </a>
-            <a href="#" className="text-color-2 hover:text-[#0077B5] transition-colors">
+            <a href="https://in.linkedin.com/company/a2zdm" className="text-color-2 hover:text-[#0077B5] transition-colors">
               <FaLinkedinIn className="w-5 h-5" />
             </a>
-            <a href="#" className="text-color-2 hover:text-[#4267B2] transition-colors">
+            <a href="https://x.com/a2zdm" className="text-color-2 hover:text-[#4267B2] transition-colors">
               <FaFacebookF className="w-5 h-5" />
             </a>
-            <a href="#" className="text-color-2 hover:text-[#E1306C] transition-colors">
-              <FaInstagram className="w-5 h-5" />
-            </a>
-            <a href="#" className="text-color-2 hover:text-[#FF0000] transition-colors">
-              <FaYoutube className="w-5 h-5" />
-            </a>
-            <a href="#" className="text-color-2 hover:text-[#00B67A] transition-colors">
-              <SiTrustpilot className="w-5 h-5" />
-            </a>
+          
           </div>
           <p className="text-color-2 text-sm text-center md:text-left">© 2024 A2ZDM Pvt. Ltd. All rights reserved.</p>
         </div>

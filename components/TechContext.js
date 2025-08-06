@@ -2727,7 +2727,7 @@ export const TechProvider = ({ children }) => {
       testimonial: {
         quote:
           "Before working with A2ZDM, we knew we had valuable expertise—but no one could find us. In just months, we went from invisible to being cited by Google's AI as a trusted expert!",
-        author: "Emily Richardson",
+        author: "Samantha",
         position: "Founder & CEO, Giggle Tree",
       },
       aiShowcase: {

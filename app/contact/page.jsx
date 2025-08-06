@@ -294,7 +294,7 @@ const contactDetails = {
       <section className="relative h-96 bg-primary-color">
         <div className="absolute inset-0 bg-gradient-to-br from-cyan-900/10 via-transparent to-blue-900/10"></div>
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d121597.05407424325!2d75.70795399783303!3d22.724055545545244!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3962fcad1b410ddb%3A0x96ec4da356240f4!2sIndore%2C%20Madhya%20Pradesh%2C%20India!5e1!3m2!1sen!2sus!4v1753907735758!5m2!1sen!2sus"
+          src="https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d949.8542938742266!2d75.9223219!3d22.7417181!3m2!1i1024!2i768!4f13.1!3m2!1m1!2s!5e1!3m2!1shi!2sin!4v1754482361343!5m2!1shi!2sin"
           width="100%"
           height="100%"
           style={{ border: 0 }}
