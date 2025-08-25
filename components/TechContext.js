@@ -1194,25 +1194,7 @@ export const TechProvider = ({ children }) => {
         },
       },
     },
-    // digital marketing industry
-    /*  {
-  title: "Digital Marketing",
-  slug: "digital-marketing",
-  icon: "FiGlobe",
-  description:
-    "Boost your brand's online presence through multi-channel digital strategies tailored for growth and engagement.",
-  gradient: "from-purple-500 to-pink-500",
-  benefits: [
-    "Reach your target audience across platforms",
-    "Enhance brand visibility and recognition",
-    "Increase website traffic and conversions",
-    "Track and optimize campaign performance"
-  ],
- services: {
-     
-
-}
-  }, */
+   
     //digital Analytics
     {
       title: "Digital Analytics",
@@ -2831,7 +2813,7 @@ export const TechProvider = ({ children }) => {
         logoUrl,
         siteUrl,
         serviceData,
-        mobile_number,
+        mobile_number,WORDPRESS_API,
         // Helper functions
         getBlogBySlug: (slug) => blogs.find((blog) => blog.slug === slug),
         getRelatedPosts: (currentBlogId) => {

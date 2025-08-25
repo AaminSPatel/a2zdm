@@ -173,9 +173,6 @@ body {
   font-family: var(--font-space-grotesk);
 }
 
-/* ==================== */
-/* COMPONENT STYLES */
-/* ==================== */
 /* Gradient Text */
 .gradient-text {
   background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));

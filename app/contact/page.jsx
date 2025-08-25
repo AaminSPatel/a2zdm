@@ -293,15 +293,15 @@ const contactDetails = {
       {/* Map Section */}
       <section className="relative h-96 bg-primary-color">
         <div className="absolute inset-0 bg-gradient-to-br from-cyan-900/10 via-transparent to-blue-900/10"></div>
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d949.8542938742266!2d75.9223219!3d22.7417181!3m2!1i1024!2i768!4f13.1!3m2!1m1!2s!5e1!3m2!1shi!2sin!4v1754482361343!5m2!1shi!2sin"
-          width="100%"
-          height="100%"
-          style={{ border: 0 }}
-          allowFullScreen
-          loading="lazy"
-          className="opacity-70 hover:opacity-100 transition-opacity"
-        ></iframe>
+       <iframe
+  src='https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d2686.654752098048!2d75.92246427514071!3d22.738609071919942!3m2!1i1024!2i768!4f13.1!3m2!1m1!2s!5e1!3m2!1sen!2sin!4v1756010743015!5m2!1sen!2sin'
+  width="100%"
+  height="100%"
+  style={{ border: 0 }}
+  allowFullScreen
+  loading="lazy"
+  className="opacity-70 hover:opacity-100 transition-opacity"
+></iframe>
         
       </section>
     </div>
